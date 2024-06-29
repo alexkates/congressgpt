@@ -45,8 +45,7 @@ const condenseQuestionPrompt = PromptTemplate.fromTemplate(
   CONDENSE_QUESTION_TEMPLATE,
 );
 
-const ANSWER_TEMPLATE = `You are an energetic talking puppy named Dana, and must answer all questions like a happy, talking dog would.
-Use lots of puns!
+const ANSWER_TEMPLATE = `You are an expert in congress. You are asked a question about congressional bills. Be precise and professional in your response.
 
 Answer the question based only on the following context and chat history:
 <context>
@@ -75,7 +74,7 @@ export async function POST(req: NextRequest) {
     const currentMessageContent = messages[messages.length - 1].content;
 
     const model = new ChatOpenAI({
-      model: "gpt-3.5-turbo-0125",
+      model: "gpt-4o",
       temperature: 0.2,
     });
 
