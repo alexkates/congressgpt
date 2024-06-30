@@ -1,13 +1,44 @@
-import * as cheerio from "cheerio";
-import getBillsFeed from "@/server/feeds/bills/get-bills-feed";
+import { BillsFeed } from "@/types/BillsFeed";
+import { createClient } from "@supabase/supabase-js";
+import { Document } from "@langchain/core/documents";
 import { NextRequest, NextResponse } from "next/server";
-import createBill from "@/server/feeds/bills/create-bill";
+import { OpenAIEmbeddings } from "@langchain/openai";
+import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
+import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
+import * as cheerio from "cheerio";
+import * as entities from "entities";
+import Parser from "rss-parser";
 
 export async function POST(req: NextRequest) {
-  const feed = await getBillsFeed();
+  const parser = new Parser();
+  const feed = (await parser.parseURL(
+    "https://www.govinfo.gov/rss/bills.xml",
+  )) as BillsFeed;
+
+  const client = createClient(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_PRIVATE_KEY!,
+  );
+
+  const processedIds = new Set<string>();
+  const skippedIds = new Set<string>();
+  const documents: Document<Record<string, any>>[] = [];
 
   for (const item of feed.items) {
-    if (item.guid === "BILLS-118s4344is") {
+    try {
+      console.log("Processing", item.guid);
+      if (item.guid !== "BILLS-118s4339is") continue; // Useful for testing just one item
+
+      const alreadyExists = await client
+        .from("documents")
+        .select("metadata->billId", { head: true, count: "exact" })
+        .eq("metadata->>billId", item.guid);
+
+      if (Boolean(alreadyExists.count)) {
+        skippedIds.add(item.guid);
+        continue;
+      }
+
       const regex = /https:\/\/[^\s]+\.htm/g;
       const matches = item.content.match(regex);
       if (!matches) continue;
@@ -17,17 +48,56 @@ export async function POST(req: NextRequest) {
       const html = await response.text();
 
       const $ = cheerio.load(html);
-      const text = $("body > pre").text();
+      const rawText = $("body > pre").text();
 
-      const scrubbedText = text
+      const text = rawText
         .replace("<all>", "")
         .replace("<DOC>", "")
         .replace(/\n{3,}/g, "\n")
         .trim();
 
-      await createBill(scrubbedText);
+      const splitter = RecursiveCharacterTextSplitter.fromLanguage("html", {
+        chunkSize: 256,
+        chunkOverlap: 20,
+      });
+
+      const metadata = {
+        billId: item.guid,
+        categories: item.categories,
+        createdAt: new Date().toISOString(),
+        link,
+        publishedAt: item.isoDate,
+        title: entities.decodeHTML(item.title),
+      };
+      const splitDocuments = await splitter.createDocuments([text], [metadata]);
+      documents.push(...splitDocuments);
+      processedIds.add(item.guid);
+    } catch (e) {
+      console.log(`Error processing ${item.guid}: ${(e as Error).message}`);
     }
   }
 
-  return NextResponse.json({ ok: true }, { status: 200 });
+  await SupabaseVectorStore.fromDocuments(documents, new OpenAIEmbeddings(), {
+    client,
+    tableName: "documents",
+    queryName: "match_documents",
+  });
+
+  if (processedIds.size > 0)
+    console.log(
+      `Processed the following IDs: ${Array.from(processedIds).join(", ")}`,
+    );
+
+  if (skippedIds.size > 0)
+    console.log(
+      `Skipped the following IDs: ${Array.from(skippedIds).join(", ")}`,
+    );
+
+  if (processedIds.size > 0)
+    return NextResponse.json(
+      { ok: true, count: processedIds.size },
+      { status: 200 },
+    );
+
+  return NextResponse.json({ ok: true }, { status: 204 });
 }
