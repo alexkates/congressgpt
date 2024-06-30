@@ -5,7 +5,6 @@ export default function Page() {
     <ChatWindow
       endpoint="api/chat"
       emptyStateComponent={<>Empty State</>}
-      showIngestForm={true}
       placeholder={""}
       // emoji="🐶"
       titleText="Title"

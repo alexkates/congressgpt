@@ -17,7 +17,6 @@ export function ChatWindow(props: {
   placeholder?: string;
   titleText?: string;
   emoji?: string;
-  showIngestForm?: boolean;
   showIntermediateStepsToggle?: boolean;
 }) {
   const messageContainerRef = useRef<HTMLDivElement | null>(null);
