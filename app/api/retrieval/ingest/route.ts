@@ -21,18 +21,6 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
   const text = body.text;
 
-  if (process.env.NEXT_PUBLIC_DEMO === "true") {
-    return NextResponse.json(
-      {
-        error: [
-          "Ingest is not supported in demo mode.",
-          "Please set up your own version of the repo here: https://github.com/langchain-ai/langchain-nextjs-template",
-        ].join("\n"),
-      },
-      { status: 403 },
-    );
-  }
-
   try {
     const client = createClient(
       process.env.SUPABASE_URL!,

@@ -108,6 +108,6 @@ export default function AgentsPage() {
       }
       emoji="🐶"
       titleText="Dana the Document-Retrieving Dog"
-    ></ChatWindow>
+    />
   );
 }
