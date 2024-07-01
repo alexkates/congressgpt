@@ -54,9 +54,14 @@ export async function POST(req: NextRequest) {
         .replace("<all>", "")
         .replace("<DOC>", "")
         .replace(/\n{3,}/g, "\n")
+        .replace(/_{3,}/g, "")
         .trim();
 
-      const splitter = RecursiveCharacterTextSplitter.fromLanguage("html", {
+      // const splitter = RecursiveCharacterTextSplitter.fromLanguage("html", {
+      //   chunkSize: 256,
+      //   chunkOverlap: 20,
+      // });
+      const splitter = new RecursiveCharacterTextSplitter({
         chunkSize: 256,
         chunkOverlap: 20,
       });
@@ -74,6 +79,7 @@ export async function POST(req: NextRequest) {
       processedIds.add(item.guid);
     } catch (e) {
       console.log(`Error processing ${item.guid}: ${(e as Error).message}`);
+      skippedIds.add(item.guid);
     }
   }
 
@@ -99,5 +105,5 @@ export async function POST(req: NextRequest) {
       { status: 200 },
     );
 
-  return NextResponse.json({ ok: true }, { status: 204 });
+  return new Response(null, { status: 204 });
 }
