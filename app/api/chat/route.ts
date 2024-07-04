@@ -45,7 +45,7 @@ const condenseQuestionPrompt = PromptTemplate.fromTemplate(
   CONDENSE_QUESTION_TEMPLATE,
 );
 
-const ANSWER_TEMPLATE = `You are an expert in congress. You are asked a question about congressional bills. Be precise and professional in your response.
+const ANSWER_TEMPLATE = `You are an expert in congress. You are asked a question about congressional bills. Be concise and professional in your response.
 
 Answer the question based only on the following context and chat history:
 <context>

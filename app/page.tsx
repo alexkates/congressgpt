@@ -6,7 +6,6 @@ export default function Page() {
       endpoint="api/chat"
       emptyStateComponent={<>Empty State</>}
       placeholder={""}
-      // emoji="🐶"
       titleText="Title"
     />
   );

@@ -26,9 +26,10 @@ export async function POST(req: NextRequest) {
 
   for (const item of feed.items) {
     try {
-      console.log("Processing", item.guid);
-      if (item.guid !== "BILLS-118s4339is") continue; // Useful for testing just one item
+      const textIds = ["BILLS-113s1447rs", "BILLS-118hr8446ih"];
+      if (!textIds.includes(item.guid)) continue; // Useful for testing just one item
 
+      console.log("Processing", item.guid);
       const alreadyExists = await client
         .from("documents")
         .select("metadata->billId", { head: true, count: "exact" })
@@ -57,13 +58,9 @@ export async function POST(req: NextRequest) {
         .replace(/_{3,}/g, "")
         .trim();
 
-      // const splitter = RecursiveCharacterTextSplitter.fromLanguage("html", {
-      //   chunkSize: 256,
-      //   chunkOverlap: 20,
-      // });
       const splitter = new RecursiveCharacterTextSplitter({
-        chunkSize: 256,
-        chunkOverlap: 20,
+        chunkSize: 2000,
+        chunkOverlap: 400,
       });
 
       const metadata = {
