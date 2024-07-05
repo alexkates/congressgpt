@@ -1,5 +1,5 @@
 {
-  "name": "langchain-nextjs-template",
+  "name": "congressgpt",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -7,14 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"app\""
+    "format": "prettier --write \"app\"",
+    "supabase": "supabase"
   },
   "engines": {
     "node": ">=18"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.8.0",
-    "@langchain/community": "^0.2.15",
+    "@langchain/community": "^0.2.17",
     "@langchain/core": "0.2.10",
     "@langchain/langgraph": "^0.0.25",
     "@langchain/openai": "^0.2.1",
@@ -51,7 +52,7 @@
     "@types/node": "20.12.12",
     "@types/react": "18.3.2",
     "@types/react-dom": "18.3.0",
-    "ai": "^3.2.15",
+    "ai": "^3.2.16",
     "autoprefixer": "10.4.14",
     "cheerio": "1.0.0-rc.12",
     "class-variance-authority": "^0.7.0",
@@ -84,7 +85,8 @@
     "zod-to-json-schema": "^3.23.1"
   },
   "devDependencies": {
-    "prettier": "3.0.0"
+    "prettier": "3.0.0",
+    "supabase": "^1.178.2"
   },
   "resolutions": {
     "@langchain/core": "0.2.10"
