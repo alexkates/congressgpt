@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -41,7 +42,7 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <div>{children}</div>
+        <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>
   );
