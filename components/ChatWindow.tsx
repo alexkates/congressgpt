@@ -3,7 +3,6 @@
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { Message } from "ai";
 import { useChat } from "ai/react";
 import { useRef, useState, ReactElement } from "react";
 import type { FormEvent } from "react";
@@ -15,7 +14,6 @@ export function ChatWindow(props: {
   emptyStateComponent: ReactElement;
   placeholder?: string;
   titleText?: string;
-  emoji?: string;
 }) {
   const messageContainerRef = useRef<HTMLDivElement | null>(null);
 
@@ -24,7 +22,6 @@ export function ChatWindow(props: {
     emptyStateComponent,
     placeholder,
     titleText = "An LLM",
-    emoji,
   } = props;
 
   const [intermediateStepsLoading, setIntermediateStepsLoading] =
@@ -86,7 +83,7 @@ export function ChatWindow(props: {
       }`}
     >
       <h2 className={`${messages.length > 0 ? "" : "hidden"} text-2xl`}>
-        {emoji} {titleText}
+        {titleText}
       </h2>
       {messages.length === 0 ? emptyStateComponent : ""}
       <div
@@ -100,7 +97,6 @@ export function ChatWindow(props: {
                 <ChatMessageBubble
                   key={m.id}
                   message={m}
-                  aiEmoji={emoji}
                   sources={sourcesForMessages[sourceKey]}
                 />
               );

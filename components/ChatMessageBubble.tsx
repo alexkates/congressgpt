@@ -1,15 +1,11 @@
 import type { Message } from "ai/react";
 
-export function ChatMessageBubble(props: {
-  message: Message;
-  aiEmoji?: string;
-  sources: any[];
-}) {
+export function ChatMessageBubble(props: { message: Message; sources: any[] }) {
   const colorClassName =
     props.message.role === "user" ? "bg-sky-600" : "bg-slate-50 text-black";
   const alignmentClassName =
     props.message.role === "user" ? "ml-auto" : "mr-auto";
-  const prefix = props.message.role === "user" ? "🧑" : props.aiEmoji;
+  const prefix = props.message.role === "user" ? "🧑" : "🤖";
   const distinctSources = Array.from(
     new Set(props.sources?.map((source) => source.metadata.title)),
   );
