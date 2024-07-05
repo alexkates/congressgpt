@@ -98,7 +98,7 @@ export function ChatWindow(props: {
           />
         ))}
       </div>
-      <div className="sticky bottom-0 p-4 z-10 bg-white">
+      <div className="sticky bottom-0 p-4 z-10 bg-background">
         <ChatMessageForm
           handleInputChange={handleInputChange}
           input={input}
