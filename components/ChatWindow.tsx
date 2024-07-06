@@ -1,21 +1,16 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useRef, useState, ReactElement } from "react";
+import { useRef, useState } from "react";
 import type { FormEvent } from "react";
 
 import { ChatMessageBubble } from "@/components/ChatMessageBubble";
 import ChatMessageForm from "./ChatMessageForm";
 
-export function ChatWindow(props: {
-  endpoint: string;
-  emptyStateComponent: ReactElement;
-  placeholder?: string;
-  titleText?: string;
-}) {
+export function ChatWindow(props: { endpoint: string; titleText?: string }) {
   const messageContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const { endpoint, emptyStateComponent, titleText = "An LLM" } = props;
+  const { endpoint } = props;
 
   const [sourcesForMessages, setSourcesForMessages] = useState<
     Record<string, any>
@@ -24,11 +19,9 @@ export function ChatWindow(props: {
   const {
     messages,
     input,
-    setInput,
     handleInputChange,
     handleSubmit,
     isLoading: chatEndpointIsLoading,
-    setMessages,
   } = useChat({
     api: endpoint,
     onResponse(response) {
@@ -63,27 +56,6 @@ export function ChatWindow(props: {
 
   return (
     <div className={"flex flex-col min-h-screen"}>
-      {/* <h2 className={`${messages.length > 0 ? "" : "hidden"} text-2xl`}>
-        {titleText}
-      </h2>
-      {messages.length === 0 ? emptyStateComponent : ""}
-      <div
-        className="flex flex-col-reverse w-full mb-4 overflow-auto transition-[flex-grow] ease-in-out"
-        ref={messageContainerRef}
-      >
-        {messages.length > 0
-          ? [...messages].reverse().map((m, i) => {
-              const sourceKey = (messages.length - 1 - i).toString();
-              return (
-                <ChatMessageBubble
-                  key={m.id}
-                  message={m}
-                  sources={sourcesForMessages[sourceKey]}
-                />
-              );
-            })
-          : ""}
-      </div> */}
       <div className="grow p-4 overflow-y-auto">
         {Array.from({ length: 100 }).map((_, i) => (
           <ChatMessageBubble

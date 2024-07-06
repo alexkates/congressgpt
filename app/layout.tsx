@@ -3,7 +3,6 @@ import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -16,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <title>CongressGPT</title>
         {/* <link rel="shortcut icon" href="/images/favicon.ico" />
@@ -51,7 +50,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             {children}
           </TooltipProvider>
         </ThemeProvider>

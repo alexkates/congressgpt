@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
     });
 
     const client = createClient(
-      process.env.SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_PRIVATE_KEY!,
     );
 
