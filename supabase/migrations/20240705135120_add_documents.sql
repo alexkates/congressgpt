@@ -1,11 +1,3 @@
--- Supabase AI is experimental and may produce incorrect answers
--- Always verify the output before executing
--- Drop the function if it exists
-DROP FUNCTION IF EXISTS match_documents (vector (1536), INT, jsonb);
-
--- Drop the table if it exists
-DROP TABLE IF EXISTS documents;
-
 -- Enable the pgvector extension to work with embedding vectors
 CREATE EXTENSION IF NOT EXISTS vector;
 
