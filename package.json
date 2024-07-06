@@ -8,17 +8,18 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"app\"",
-    "supabase:start": "npx supabase start",
-    "supabase:stop": "npx supabase stop",
-    "supabase:status": "npx supabase status",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:status": "supabase status",
     "supabase:restart": "npm run supabase:stop && npm run supabase:start",
-    "supabase:reset": "npx supabase db reset",
-    "supabase:link": "npx supabase link",
-    "supabase:generate-types": "npx supabase gen types typescript --local --schema public > types/supabase.ts",
-    "supabase:generate-migration": "npx supabase db diff | npx supabase migration new",
-    "supabase:generate-seed": "npx supabase db dump --data-only -f supabase/seed.sql",
-    "supabase:push": "npx supabase db push",
-    "supabase:pull": "npx supabase db pull"
+    "supabase:reset": "supabase db reset",
+    "supabase:link": "supabase link",
+    "supabase:generate-types": "supabase gen types typescript --local --schema public > types/supabase.ts",
+    "supabase:generate-migration": "supabase db diff | supabase migration new",
+    "supabase:generate-seed": "supabase db dump --data-only -f supabase/seed.sql",
+    "supabase:push": "supabase db push",
+    "supabase:pull": "supabase db pull",
+    "supabase:migration-up": "supabase migration up"
   },
   "engines": {
     "node": ">=18"
