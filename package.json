@@ -8,18 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"app\"",
-    "supabase:start": "supabase start",
-    "supabase:stop": "supabase stop",
-    "supabase:status": "supabase status",
-    "supabase:restart": "npm run supabase:stop && npm run supabase:start",
-    "supabase:reset": "supabase db reset",
-    "supabase:link": "supabase link",
-    "supabase:generate-types": "supabase gen types typescript --local --schema public > types/supabase.ts",
-    "supabase:generate-migration": "supabase db diff | supabase migration new",
-    "supabase:generate-seed": "supabase db dump --data-only -f supabase/seed.sql",
-    "supabase:push": "supabase db push",
-    "supabase:pull": "supabase db pull",
-    "supabase:migration-up": "supabase migration up"
+    "supabase:generate-types": "supabase gen types typescript --linked --schema public > types/supabase.ts"
   },
   "engines": {
     "node": ">=18"

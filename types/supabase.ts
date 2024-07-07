@@ -9,6 +9,64 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      chat_messages: {
+        Row: {
+          chat_id: number
+          created_at: string
+          id: number
+          message: string | null
+        }
+        Insert: {
+          chat_id: number
+          created_at?: string
+          id?: never
+          message?: string | null
+        }
+        Update: {
+          chat_id?: number
+          created_at?: string
+          id?: never
+          message?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_messages_chat_id_fkey"
+            columns: ["chat_id"]
+            isOneToOne: false
+            referencedRelation: "chats"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      chats: {
+        Row: {
+          created_at: string
+          id: number
+          name: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: never
+          name?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: never
+          name?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chats_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       customers: {
         Row: {
           id: string
@@ -523,4 +581,3 @@ export type Enums<
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
     : never
-

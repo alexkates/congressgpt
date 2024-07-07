@@ -7,9 +7,7 @@ import type { FormEvent } from "react";
 import { ChatMessageBubble } from "@/components/ChatMessageBubble";
 import ChatMessageForm from "./ChatMessageForm";
 
-export function ChatWindow(props: { endpoint: string; titleText?: string }) {
-  const { endpoint } = props;
-
+export function ChatWindow() {
   const [sourcesForMessages, setSourcesForMessages] = useState<
     Record<string, any>
   >({});
@@ -21,7 +19,7 @@ export function ChatWindow(props: { endpoint: string; titleText?: string }) {
     handleSubmit,
     isLoading: chatEndpointIsLoading,
   } = useChat({
-    api: endpoint,
+    api: "api/chat",
     onResponse(response) {
       const sourcesHeader = response.headers.get("x-sources");
       const sources = sourcesHeader
@@ -48,7 +46,6 @@ export function ChatWindow(props: { endpoint: string; titleText?: string }) {
   return (
     <div className={"flex flex-col min-h-screen"}>
       <div className="grow p-4 overflow-y-auto">
-        <h1 className="text-2xl font-bold">{props.titleText}</h1>
         <div className="h-4" />
         <div className="flex flex-col space-y-4 grow">
           {messages.map((message, i) => (
