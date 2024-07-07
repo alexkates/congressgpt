@@ -2,11 +2,11 @@ import { CornerDownLeft } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { Input } from "./ui/input";
 
 type Props = {
   input: string;
-  handleInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   sendMessage: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
@@ -23,7 +23,7 @@ export default function ChatMessageForm({
       <Label htmlFor="message" className="sr-only">
         Message
       </Label>
-      <Textarea
+      <Input
         id="message"
         placeholder="Type your message here..."
         className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0"

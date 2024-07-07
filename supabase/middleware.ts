@@ -37,7 +37,13 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const anonPages = ["/auth/callback", "/sign-in", "/sign-up", "/error"];
+  const anonPages = [
+    "/auth/callback",
+    "/sign-in",
+    "/sign-up",
+    "/error",
+    "/cron",
+  ];
   if (!user && !anonPages.includes(request.nextUrl.pathname)) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone();

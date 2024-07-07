@@ -1,15 +1,13 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import type { FormEvent } from "react";
 
 import { ChatMessageBubble } from "@/components/ChatMessageBubble";
 import ChatMessageForm from "./ChatMessageForm";
 
 export function ChatWindow(props: { endpoint: string; titleText?: string }) {
-  const messageContainerRef = useRef<HTMLDivElement | null>(null);
-
   const { endpoint } = props;
 
   const [sourcesForMessages, setSourcesForMessages] = useState<
@@ -42,33 +40,25 @@ export function ChatWindow(props: { endpoint: string; titleText?: string }) {
 
   async function sendMessage(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (messageContainerRef.current) {
-      messageContainerRef.current.classList.add("grow");
-    }
-    if (!messages.length) {
-      await new Promise((resolve) => setTimeout(resolve, 300));
-    }
-    if (chatEndpointIsLoading) {
-      return;
-    }
+    if (chatEndpointIsLoading) return;
+
     handleSubmit(e);
   }
 
   return (
     <div className={"flex flex-col min-h-screen"}>
       <div className="grow p-4 overflow-y-auto">
-        {Array.from({ length: 100 }).map((_, i) => (
-          <ChatMessageBubble
-            key={i}
-            message={{
-              id: i.toString(),
-              content:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet ",
-              role: i % 2 === 0 ? "user" : "system",
-            }}
-            sources={[]}
-          />
-        ))}
+        <h1 className="text-2xl font-bold">{props.titleText}</h1>
+        <div className="h-4" />
+        <div className="flex flex-col space-y-4 grow">
+          {messages.map((message, i) => (
+            <ChatMessageBubble
+              key={i}
+              message={message}
+              sources={sourcesForMessages[i]}
+            />
+          ))}
+        </div>
       </div>
       <div className="sticky bottom-0 p-4 z-10 bg-background">
         <ChatMessageForm
