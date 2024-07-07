@@ -1,8 +1,11 @@
+import AvatarMenu from "@/components/AvatarMenu";
 import ChatList from "@/components/ChatList";
 import MobileChatList from "@/components/MobileChatList";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { createClient } from "@/supabase/server";
 import { Tables } from "@/types/supabase";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 
 type Props = {
@@ -33,6 +36,12 @@ async function Layout({ children }: Props) {
     ]);
   });
 
+  const supabase = createClient();
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error) redirect("/error");
+  const { user } = data;
+
   return (
     <>
       <div className="md:hidden">
@@ -40,11 +49,16 @@ async function Layout({ children }: Props) {
       </div>
 
       <main className="flex">
-        <aside className="hidden md:flex flex-col gap-4 p-4">
-          <Link href="/chat" className="font-bold">
-            CongressGPT
-          </Link>
-          <ChatList chats={chats} />
+        <aside className="hidden md:flex flex-col p-4 min-h-screen">
+          <section className="flex flex-col gap-4 grow">
+            <Link href="/chat" className="font-bold">
+              CongressGPT
+            </Link>
+            <ChatList chats={chats} />
+          </section>
+          <section>
+            <AvatarMenu user={user} />
+          </section>
         </aside>
         <section className="grow">{children}</section>
       </main>
