@@ -4,7 +4,7 @@ import { useChat } from "ai/react";
 import { useState } from "react";
 import type { FormEvent } from "react";
 
-import { ChatMessageBubble } from "@/components/ChatMessageBubble";
+import { ChatMessage } from "@/components/ChatMessage";
 import ChatMessageForm from "./ChatMessageForm";
 
 export function ChatWindow() {
@@ -48,7 +48,7 @@ export function ChatWindow() {
       <div className="grow overflow-y-auto">
         <div className="flex flex-col gap-4 grow p-4">
           {messages.map((message, i) => (
-            <ChatMessageBubble
+            <ChatMessage
               key={i}
               message={message}
               sources={sourcesForMessages[i]}
