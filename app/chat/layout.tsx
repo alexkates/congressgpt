@@ -35,24 +35,18 @@ async function Layout({ children }: Props) {
 
   return (
     <>
-      <header className="flex items-center justify-between p-4">
-        <div className="md:hidden">
-          <MobileChatList chats={chats} />
-        </div>
-        <div className="hidden md:flex">
+      <div className="md:hidden">
+        <MobileChatList chats={chats} />
+      </div>
+
+      <main className="flex">
+        <aside className="hidden md:flex flex-col gap-4 p-4">
           <Link href="/chat" className="font-bold">
             CongressGPT
           </Link>
-        </div>
-        <div className="flex items-center gap-4">
-          <ThemeToggle />
-        </div>
-      </header>
-      <main className="flex">
-        <aside className="hidden md:flex px-4">
           <ChatList chats={chats} />
         </aside>
-        <section className="grow px-4">{children}</section>
+        <section className="grow">{children}</section>
       </main>
     </>
   );

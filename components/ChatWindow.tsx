@@ -45,9 +45,8 @@ export function ChatWindow() {
 
   return (
     <div className={"flex flex-col min-h-screen"}>
-      <div className="grow p-4 overflow-y-auto">
-        <div className="h-4" />
-        <div className="flex flex-col space-y-4 grow">
+      <div className="grow overflow-y-auto">
+        <div className="flex flex-col gap-4 grow p-4">
           {messages.map((message, i) => (
             <ChatMessageBubble
               key={i}

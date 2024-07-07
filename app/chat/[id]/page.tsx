@@ -7,9 +7,5 @@ type Props = {
 };
 
 export default function Page({ params }: Props) {
-  return (
-    <>
-      <ChatWindow />
-    </>
-  );
+  return <ChatWindow />;
 }
