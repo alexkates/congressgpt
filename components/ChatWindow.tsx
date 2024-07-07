@@ -19,7 +19,7 @@ export function ChatWindow() {
     handleSubmit,
     isLoading: chatEndpointIsLoading,
   } = useChat({
-    api: "chat/completions",
+    api: "/chat/completions",
     onResponse(response) {
       const sourcesHeader = response.headers.get("x-sources");
       const sources = sourcesHeader

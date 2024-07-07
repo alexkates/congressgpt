@@ -26,7 +26,7 @@ export default function ChatMessageForm({
       <Input
         id="message"
         placeholder="Type your message here..."
-        className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0"
+        className="border-0 p-3 shadow-none focus-visible:ring-0"
         value={input}
         onChange={handleInputChange}
       />
