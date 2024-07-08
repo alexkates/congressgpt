@@ -1,3 +1,5 @@
-export default function Page() {
-  return <div>Chat Home Page</div>;
+import { ChatWindow } from "@/components/ChatWindow";
+
+export default async function Page() {
+  return <ChatWindow />;
 }
