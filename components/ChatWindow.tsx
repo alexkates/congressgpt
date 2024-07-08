@@ -6,14 +6,7 @@ import type { FormEvent } from "react";
 
 import { ChatMessage } from "@/components/ChatMessage";
 import ChatMessageForm from "./ChatMessageForm";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "./ui/card";
+import { Card, CardHeader, CardDescription } from "./ui/card";
 
 export function ChatWindow() {
   const [sourcesForMessages, setSourcesForMessages] = useState<
@@ -62,7 +55,7 @@ export function ChatWindow() {
   ];
 
   return (
-    <div className={"flex flex-col min-h-screen h-full"}>
+    <div className={"flex flex-col min-h-screen"}>
       {messages?.length === 0 ? (
         <div className="flex flex-col grow items-center justify-center p-4">
           <div className="grid place-items-center gap-4">

@@ -1,4 +1,7 @@
 import type { Message } from "ai/react";
+import { MemoizedReactMarkdown } from "./Markdown";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 
 type Props = {
   message: Message;
@@ -18,12 +21,21 @@ export function ChatMessage({ message, sources }: Props) {
 
   return (
     <div
-      className={`${alignmentClassName} ${colorClassNames} rounded px-4 py-2 max-w-[80%] mb-8 flex flex-col`}
+      className={`${alignmentClassName} ${colorClassNames} rounded px-4 py-2 max-w-[80%] mb-8 flex flex-col gap-4`}
     >
-      <span>{message.content}</span>
+      <MemoizedReactMarkdown
+        className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0"
+        remarkPlugins={[remarkGfm, remarkMath]}
+        components={{
+          p({ children }) {
+            return <p className="mb-2 last:mb-0">{children}</p>;
+          },
+        }}
+      >
+        {message.content}
+      </MemoizedReactMarkdown>
       {distinctSources?.length > 0 && (
-        <>
-          <br />
+        <div>
           <h2>🔍 Sources:</h2>
           <ul>
             {distinctSources.map((title, i) => {
@@ -44,7 +56,7 @@ export function ChatMessage({ message, sources }: Props) {
               );
             })}
           </ul>
-        </>
+        </div>
       )}
     </div>
   );
