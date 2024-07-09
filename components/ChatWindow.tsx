@@ -7,6 +7,8 @@ import type { FormEvent } from "react";
 import { ChatMessage } from "@/components/ChatMessage";
 import ChatMessageForm from "./ChatMessageForm";
 import { Card, CardHeader, CardDescription } from "./ui/card";
+import { Tables } from "@/types/supabase";
+import { createClient } from "@/supabase/client";
 
 export function ChatWindow() {
   const [sourcesForMessages, setSourcesForMessages] = useState<
@@ -22,6 +24,11 @@ export function ChatWindow() {
     isLoading: chatEndpointIsLoading,
   } = useChat({
     api: "/chat/completions",
+
+    onFinish(message) {
+      console.log(`Finished message: ${JSON.stringify(message, null, 2)}`);
+    },
+
     onResponse(response) {
       const sourcesHeader = response.headers.get("x-sources");
       const sources = sourcesHeader
@@ -42,16 +49,18 @@ export function ChatWindow() {
     e.preventDefault();
     if (chatEndpointIsLoading) return;
 
+    console.log(`Message sent: ${JSON.stringify(input, null, 2)}`);
+
     handleSubmit(e);
   }
 
   const prompts = [
-    "Quiz me on recent legislation",
     "Summarize a random bill",
     "What is the legislative process",
     "Tell me about an environmental bill",
     "Who introduced the last bill",
     "When was your last bill passed",
+    "Quiz me on recent legislation",
   ];
 
   return (

@@ -11,22 +11,25 @@ export type Database = {
     Tables: {
       chat_messages: {
         Row: {
-          chat_id: number
+          chat_id: string
+          content: string | null
           created_at: string
-          id: number
-          message: string | null
+          id: string
+          role: string | null
         }
         Insert: {
-          chat_id: number
+          chat_id: string
+          content?: string | null
           created_at?: string
-          id?: never
-          message?: string | null
+          id?: string
+          role?: string | null
         }
         Update: {
-          chat_id?: number
+          chat_id?: string
+          content?: string | null
           created_at?: string
-          id?: never
-          message?: string | null
+          id?: string
+          role?: string | null
         }
         Relationships: [
           {
@@ -41,19 +44,19 @@ export type Database = {
       chats: {
         Row: {
           created_at: string
-          id: number
+          id: string
           name: string | null
           user_id: string
         }
         Insert: {
           created_at?: string
-          id?: never
+          id?: string
           name?: string | null
           user_id: string
         }
         Update: {
           created_at?: string
-          id?: never
+          id?: string
           name?: string | null
           user_id?: string
         }
