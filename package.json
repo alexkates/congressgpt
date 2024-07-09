@@ -49,11 +49,11 @@
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
     "@supabase/ssr": "^0.4.0",
-    "@supabase/supabase-js": "^2.44.2",
+    "@supabase/supabase-js": "^2.44.3",
     "@types/node": "20.12.12",
     "@types/react": "18.3.2",
     "@types/react-dom": "18.3.0",
-    "ai": "^3.2.16",
+    "ai": "^3.2.18",
     "autoprefixer": "10.4.14",
     "cheerio": "1.0.0-rc.12",
     "class-variance-authority": "^0.7.0",
@@ -80,7 +80,7 @@
     "remark-math": "^6.0.0",
     "rss-parser": "^3.13.0",
     "sonner": "^1.5.0",
-    "tailwind-merge": "^2.3.0",
+    "tailwind-merge": "^2.4.0",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.1.6",
@@ -90,7 +90,7 @@
   },
   "devDependencies": {
     "prettier": "3.0.0",
-    "supabase": "^1.178.2"
+    "supabase": "^1.183.5"
   },
   "resolutions": {
     "@langchain/core": "0.2.10"
