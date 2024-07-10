@@ -1,16 +1,21 @@
 "use client";
 
-import { useChat } from "ai/react";
+import { Message, useChat } from "ai/react";
 import { useState } from "react";
 import type { FormEvent } from "react";
 
 import { ChatMessage } from "@/components/ChatMessage";
 import ChatMessageForm from "./ChatMessageForm";
 import { Card, CardHeader, CardDescription } from "./ui/card";
-import { Tables } from "@/types/supabase";
-import { createClient } from "@/supabase/client";
+import { createClient } from "@/supabase/server";
+import { redirect } from "next/navigation";
+import { createChat } from "@/app/chat/[id]/actions";
 
-export function ChatWindow() {
+type Props = {
+  initialMessages?: Message[];
+};
+
+export function ChatWindow({ initialMessages }: Props) {
   const [sourcesForMessages, setSourcesForMessages] = useState<
     Record<string, any>
   >({});
@@ -24,7 +29,7 @@ export function ChatWindow() {
     isLoading: chatEndpointIsLoading,
   } = useChat({
     api: "/chat/completions",
-
+    initialMessages,
     onFinish(message) {
       console.log(`Finished message: ${JSON.stringify(message, null, 2)}`);
     },
@@ -54,6 +59,10 @@ export function ChatWindow() {
     handleSubmit(e);
   }
 
+  async function initializeNewChat() {
+    await createChat(input);
+  }
+
   const prompts = [
     "Summarize a random bill",
     "What is the legislative process",
@@ -74,7 +83,7 @@ export function ChatWindow() {
             </p>
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
               {prompts.map((prompt) => (
-                <form key={prompt} onSubmit={sendMessage}>
+                <form key={prompt} onSubmit={initializeNewChat}>
                   <button type="submit" onClick={() => setInput(prompt)}>
                     <Card className="max-w-[200px] cursor-pointer hover:border-primary transition-colors duration-200 ease-in-out">
                       <CardHeader>

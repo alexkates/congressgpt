@@ -7,5 +7,6 @@ type Props = {
 };
 
 export default function Page({ params }: Props) {
-  return <ChatWindow />;
+  console.log(params.id);
+  return <></>;
 }
