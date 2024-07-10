@@ -16,19 +16,19 @@ async function Layout({ children }: Props) {
   const chats = await new Promise<Tables<"chats">[]>((resolve) => {
     resolve([
       {
-        id: 1,
+        id: "1",
         name: "Chat 1",
         created_at: new Date().toISOString(),
         user_id: "abc",
       },
       {
-        id: 2,
+        id: "2",
         name: "Chat 2 with a much longer name to test button sizes",
         created_at: new Date().toISOString(),
         user_id: "abc",
       },
       {
-        id: 3,
+        id: "3",
         name: "Chat 3",
         created_at: new Date().toISOString(),
         user_id: "abc",

@@ -15,20 +15,20 @@ importers:
         specifier: ^3.9.0
         version: 3.9.0(react-hook-form@7.52.1(react@18.3.1))
       '@langchain/community':
-        specifier: ^0.2.17
-        version: 0.2.17(@supabase/postgrest-js@1.15.8)(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(lodash@4.17.21)(openai@4.52.4)(ws@8.18.0)
+        specifier: ^0.2.18
+        version: 0.2.18(@langchain/langgraph@0.0.25(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5))(@supabase/postgrest-js@1.15.8)(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(lodash@4.17.21)(openai@4.52.5)(ws@8.18.0)
       '@langchain/core':
         specifier: 0.2.10
-        version: 0.2.10(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+        version: 0.2.10(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       '@langchain/langgraph':
         specifier: ^0.0.25
-        version: 0.0.25(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+        version: 0.0.25(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       '@langchain/openai':
         specifier: ^0.2.1
-        version: 0.2.1(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))
+        version: 0.2.1(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))
       '@langchain/textsplitters':
         specifier: ^0.0.3
-        version: 0.0.3(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+        version: 0.0.3(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       '@next/bundle-analyzer':
         specifier: ^13.5.6
         version: 13.5.6
@@ -129,8 +129,8 @@ importers:
         specifier: 18.3.0
         version: 18.3.0
       ai:
-        specifier: ^3.2.18
-        version: 3.2.18(openai@4.52.4)(react@18.3.1)(svelte@4.2.18)(vue@3.4.31(typescript@5.1.6))(zod@3.23.8)
+        specifier: ^3.2.19
+        version: 3.2.19(openai@4.52.5)(react@18.3.1)(svelte@4.2.18)(vue@3.4.31(typescript@5.1.6))(zod@3.23.8)
       autoprefixer:
         specifier: 10.4.14
         version: 10.4.14(postcss@8.4.27)
@@ -165,8 +165,8 @@ importers:
         specifier: ^1.2.4
         version: 1.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       langchain:
-        specifier: ^0.2.8
-        version: 0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0)
+        specifier: ^0.2.9
+        version: 0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0)
       lucide-react:
         specifier: ^0.400.0
         version: 0.400.0(react@18.3.1)
@@ -240,8 +240,8 @@ importers:
 
 packages:
 
-  '@ai-sdk/provider-utils@1.0.1':
-    resolution: {integrity: sha512-PtbxRf/CQwNsXuLan8FmyseE/eQ3uF6LGAvjFD47MosHs9cYaWBDIjx2XraucdVWp1gmRYb2SO4P48xPi2r/NQ==}
+  '@ai-sdk/provider-utils@1.0.2':
+    resolution: {integrity: sha512-57f6O4OFVNEpI8Z8o+K40tIB3YQiTw+VCql/qrAO9Utq7Ti1o6+X9tvm177DlZJL7ft0Rwzvgy48S9YhrEKgmA==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.0.0
@@ -249,12 +249,12 @@ packages:
       zod:
         optional: true
 
-  '@ai-sdk/provider@0.0.11':
-    resolution: {integrity: sha512-VTipPQ92Moa5Ovg/nZIc8yNoIFfukZjUHZcQMduJbiUh3CLQyrBAKTEV9AwjPy8wgVxj3+GZjon0yyOJKhfp5g==}
+  '@ai-sdk/provider@0.0.12':
+    resolution: {integrity: sha512-oOwPQD8i2Ynpn22cur4sk26FW3mSy6t6/X/K1Ay2yGBKYiSpRyLfObhOrZEGsXDx+3euKy4nEZ193R36NM+tpQ==}
     engines: {node: '>=18'}
 
-  '@ai-sdk/react@0.0.18':
-    resolution: {integrity: sha512-e1JUnUmc5LSR/PIZVOZ+az6ywKcQrBnahmDwX8GJhlGSPoG3PfAGAm9ZnhqwaYr5orPMhh8+9eUdwbvrWWQwPg==}
+  '@ai-sdk/react@0.0.19':
+    resolution: {integrity: sha512-BF8oeAWGyls0IGdesN5sEik0gPsqmgcYxRVRL9jAk1ZHml3VUzubB/t23mSKRuaiERYkDJ66PItF8OFfbmzIbw==}
     engines: {node: '>=18'}
     peerDependencies:
       react: ^18 || ^19
@@ -265,8 +265,8 @@ packages:
       zod:
         optional: true
 
-  '@ai-sdk/solid@0.0.12':
-    resolution: {integrity: sha512-H7zkbrdfGQ7wwgDsineg6PcBD8YSUTn7aUSHdmLZqezRtBuzRtRRGj+Jcr6LnN7j28GWzv8UO7sLSPFfCfQRTA==}
+  '@ai-sdk/solid@0.0.13':
+    resolution: {integrity: sha512-n+0PG7qtS3OY+OjTzRAhH1NxH09g5/71+TXBnpaxjDIZ02KK46JL4Tk4n0aI9r1HS1n9R/nx0Uiqu2UIPaVtgA==}
     engines: {node: '>=18'}
     peerDependencies:
       solid-js: ^1.7.7
@@ -274,8 +274,8 @@ packages:
       solid-js:
         optional: true
 
-  '@ai-sdk/svelte@0.0.13':
-    resolution: {integrity: sha512-AeJNxxd3qoxfZtnYanFrHAS4HyymN70VDyZQo3swhjVDkLUtDTnCd1HwBVn8OL9qSJjxawOWjM6fccEz6VY2pQ==}
+  '@ai-sdk/svelte@0.0.14':
+    resolution: {integrity: sha512-6CyuiUXgIXpgLuL7PE1evVZtO8OjqD/Pjz5vGXnSjgbP8+tTZU5nglFYwEdwJ1rKssohnyGuAXA7+9+vTVhZMw==}
     engines: {node: '>=18'}
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0
@@ -283,8 +283,8 @@ packages:
       svelte:
         optional: true
 
-  '@ai-sdk/ui-utils@0.0.10':
-    resolution: {integrity: sha512-XHqfqtx9ryVXZ/ZFyVEX44r2JJslKh3DBSIPVdSsiNoxUpzzM7mrIVT2XOMSrCSxoCqScOk8GVRsw/dwG1xw7Q==}
+  '@ai-sdk/ui-utils@0.0.11':
+    resolution: {integrity: sha512-1Ag67zp0xue0i4g6TUF8L7YPkmYPlX3iiDUY9tsMqVjViqnvG6458fc2Mnh2yGgDjt0URv0rpjORPquxO/Llgw==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.0.0
@@ -292,8 +292,8 @@ packages:
       zod:
         optional: true
 
-  '@ai-sdk/vue@0.0.12':
-    resolution: {integrity: sha512-qhHRNp+F5SDkO4HklrD6EmRCrec4xO7huHkm08QxoUm2l8sPcnPgUG3ur6+3Q6QDKI9WmfbqkRR3YR0y6IZM5g==}
+  '@ai-sdk/vue@0.0.13':
+    resolution: {integrity: sha512-uBw8ZzvPev02dlfk7jQeRyd3mx4EkvGnxhxHnZlSJY6tqkLx8XMfR6vx4dwphbjiAXQWqOFUb0rZyr/JyQfREg==}
     engines: {node: '>=18'}
     peerDependencies:
       vue: ^3.3.4
@@ -401,14 +401,14 @@ packages:
     resolution: {integrity: sha512-R8gLRTZeyp03ymzP/6Lil/28tGeGEzhx1q2k703KGWRAI1VdvPIXdG70VJc2pAMw3NA6JKL5hhFu1sJX0Mnn/A==}
     engines: {node: '>=6.0.0'}
 
-  '@jridgewell/sourcemap-codec@1.4.15':
-    resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
+  '@jridgewell/sourcemap-codec@1.5.0':
+    resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@langchain/community@0.2.17':
-    resolution: {integrity: sha512-lbmOvOvE0L2EV8lUb/ZcYyrLGF0sveGpYg9A0m6F/nDhuPG1HZqHvU/LiHsCaVO2WJPGowibMPTC02fUG/6dKA==}
+  '@langchain/community@0.2.18':
+    resolution: {integrity: sha512-UsCB97dMG87giQLniKx4bjv7OnMw2vQeavSt9gqOnGCnfb5IQBAgdjX4SjwFPbVGMz1HQoQKVlNqQ64ozCdgNg==}
     engines: {node: '>=18'}
     peerDependencies:
       '@aws-crypto/sha256-js': ^5.0.0
@@ -437,6 +437,7 @@ packages:
       '@google-cloud/storage': ^6.10.1 || ^7.7.0
       '@gradientai/nodejs-sdk': ^1.2.0
       '@huggingface/inference': ^2.6.4
+      '@langchain/langgraph': ~0.0.26
       '@layerup/layerup-security': ^1.5.12
       '@mendable/firecrawl-js': ^0.0.13
       '@mlc-ai/web-llm': 0.2.46
@@ -583,6 +584,8 @@ packages:
       '@gradientai/nodejs-sdk':
         optional: true
       '@huggingface/inference':
+        optional: true
+      '@langchain/langgraph':
         optional: true
       '@layerup/layerup-security':
         optional: true
@@ -1846,8 +1849,8 @@ packages:
     resolution: {integrity: sha512-5GG/5IbQQpC9FpkRGsSvZI5QYeSCzlJHdpBQntCsuTOxhKD8lqKhrleg2Yi7yvMIf82Ycmmqln9U8V9qwEiJew==}
     engines: {node: '>= 8.0.0'}
 
-  ai@3.2.18:
-    resolution: {integrity: sha512-8ZZF7s9sgerhPEUP8SdUstEQo9JneIah/lMpiiH+sTgoSmu1S/u8pTQ7rDwzfVHM6qYOeGZGHnye3VK4Sn6lbw==}
+  ai@3.2.19:
+    resolution: {integrity: sha512-fQV1FSp+mq8PsYM79Ik1u00pDhDn2zy7FaL6oXnELnpRefPhViO8OHtlS+ptOS9fj9+Il6GXTbVfS5fAhDvLfA==}
     engines: {node: '>=18'}
     peerDependencies:
       openai: ^4.42.0
@@ -2009,8 +2012,8 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
-  browserslist@4.23.1:
-    resolution: {integrity: sha512-TUfofFo/KsK/bWZ9TWQ5O26tsWW4Uhmt8IYklbnUa70udB6P2wA7w7o4PY4muaEPBQaAX+CEnmmIA41NVHtPVw==}
+  browserslist@4.23.2:
+    resolution: {integrity: sha512-qkqSyistMYdxAcw+CzbZwlBy8AGmS/eEWs+sEV5TnLRGDOL+C5M2EnH6tlZyg0YoAxGJAFKh61En9BR941GnHA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
@@ -2034,8 +2037,8 @@ packages:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
 
-  caniuse-lite@1.0.30001640:
-    resolution: {integrity: sha512-lA4VMpW0PSUrFnkmVuEKBUovSWKhj7puyCg8StBChgu298N1AtuF1sKWEvfDuimSEDbhlb/KqPKC3fs1HbuQUA==}
+  caniuse-lite@1.0.30001641:
+    resolution: {integrity: sha512-Phv5thgl67bHYo1TtMY/MurjkHhV4EDaCosezRXgZ8jzA/Ub+wjxAvbGvjoFENStinwi5kCyOYV3mi5tOGykwA==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -2277,8 +2280,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.4.820:
-    resolution: {integrity: sha512-kK/4O/YunacfboFEk/BDf7VO1HoPmDudLTJAU9NmXIOSjsV7qVIX3OrI4REZo0VmdqhcpUcncQc6N8Q3aEXlHg==}
+  electron-to-chromium@1.4.823:
+    resolution: {integrity: sha512-4h+oPeAiGQOHFyUJOqpoEcPj/xxlicxBzOErVeYVMMmAiXUXsGpsFd0QXBMaUUbnD8hhSfLf9uw+MlsoIA7j5w==}
 
   embla-carousel-react@8.1.6:
     resolution: {integrity: sha512-DHxwFzF63yVrU95Eo58E9Xr5b6Y9ul6TTsqb/rtwMi+jXudAmIqN1i9iBxQ73i8jKuUVxll/ziNYMmnWvrdQJQ==}
@@ -3067,8 +3070,8 @@ packages:
       youtubei.js:
         optional: true
 
-  langchain@0.2.8:
-    resolution: {integrity: sha512-kb2IOMA71xH8e6EXFg0l4S+QSMC/c796pj1+7mPBkR91HHwoyHZhFRrBaZv4tV+Td+Ba91J2uEDBmySklZLpNQ==}
+  langchain@0.2.9:
+    resolution: {integrity: sha512-iZ0l7BDVfoifqZlDl1gy3JP5mIdhYjWiToPlDnlmfHD748cw3okvF0gZo0ruT4nbftnQcaM7JzPUiNC43UPfgg==}
     engines: {node: '>=18'}
     peerDependencies:
       '@aws-sdk/client-s3': ^3.310.0
@@ -3282,9 +3285,8 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
 
-  lru-cache@10.4.2:
-    resolution: {integrity: sha512-voV4dDrdVZVNz84n39LFKDaRzfwhdzJ7akpyXfTMxCgRUp07U3lcJUXRlhTKP17rgt09sUzLi5iCitpEAr+6ug==}
-    engines: {node: 14 || 16 || 18 || 20 || >=22}
+  lru-cache@10.4.3:
+    resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
   lucide-react@0.400.0:
     resolution: {integrity: sha512-rpp7pFHh3Xd93KHixNgB0SqThMHpYNzsGUu69UaQbSZ75Q/J3m5t6EhKyMT3m4w2WOxmJ2mY0tD3vebnXqQryQ==}
@@ -3629,8 +3631,8 @@ packages:
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
 
-  openai@4.52.4:
-    resolution: {integrity: sha512-3CkV7e8epJBnTe5ptn4i3ivfm1d8cvkbvBOzhGmGYEarpDpcCgwOMV1aBPvZ/HoveUtREWUE9Fqcy7BcPNtMJg==}
+  openai@4.52.5:
+    resolution: {integrity: sha512-qqH8GsyPE3z06took/2uWOGqRcrZNlRoPAsihpg4jsl0+2Dfelnw6HDDMep0EI2Cfzw75nn3vHRZehep/IZzxg==}
     hasBin: true
 
   openapi-types@12.1.3:
@@ -4295,6 +4297,10 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  uuid@10.0.0:
+    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+    hasBin: true
+
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
@@ -4440,54 +4446,54 @@ packages:
 
 snapshots:
 
-  '@ai-sdk/provider-utils@1.0.1(zod@3.23.8)':
+  '@ai-sdk/provider-utils@1.0.2(zod@3.23.8)':
     dependencies:
-      '@ai-sdk/provider': 0.0.11
+      '@ai-sdk/provider': 0.0.12
       eventsource-parser: 1.1.2
       nanoid: 3.3.6
       secure-json-parse: 2.7.0
     optionalDependencies:
       zod: 3.23.8
 
-  '@ai-sdk/provider@0.0.11':
+  '@ai-sdk/provider@0.0.12':
     dependencies:
       json-schema: 0.4.0
 
-  '@ai-sdk/react@0.0.18(react@18.3.1)(zod@3.23.8)':
+  '@ai-sdk/react@0.0.19(react@18.3.1)(zod@3.23.8)':
     dependencies:
-      '@ai-sdk/provider-utils': 1.0.1(zod@3.23.8)
-      '@ai-sdk/ui-utils': 0.0.10(zod@3.23.8)
+      '@ai-sdk/provider-utils': 1.0.2(zod@3.23.8)
+      '@ai-sdk/ui-utils': 0.0.11(zod@3.23.8)
       swr: 2.2.0(react@18.3.1)
     optionalDependencies:
       react: 18.3.1
       zod: 3.23.8
 
-  '@ai-sdk/solid@0.0.12(zod@3.23.8)':
+  '@ai-sdk/solid@0.0.13(zod@3.23.8)':
     dependencies:
-      '@ai-sdk/ui-utils': 0.0.10(zod@3.23.8)
+      '@ai-sdk/ui-utils': 0.0.11(zod@3.23.8)
     transitivePeerDependencies:
       - zod
 
-  '@ai-sdk/svelte@0.0.13(svelte@4.2.18)(zod@3.23.8)':
+  '@ai-sdk/svelte@0.0.14(svelte@4.2.18)(zod@3.23.8)':
     dependencies:
-      '@ai-sdk/provider-utils': 1.0.1(zod@3.23.8)
-      '@ai-sdk/ui-utils': 0.0.10(zod@3.23.8)
+      '@ai-sdk/provider-utils': 1.0.2(zod@3.23.8)
+      '@ai-sdk/ui-utils': 0.0.11(zod@3.23.8)
       sswr: 2.1.0(svelte@4.2.18)
     optionalDependencies:
       svelte: 4.2.18
     transitivePeerDependencies:
       - zod
 
-  '@ai-sdk/ui-utils@0.0.10(zod@3.23.8)':
+  '@ai-sdk/ui-utils@0.0.11(zod@3.23.8)':
     dependencies:
-      '@ai-sdk/provider-utils': 1.0.1(zod@3.23.8)
+      '@ai-sdk/provider-utils': 1.0.2(zod@3.23.8)
       secure-json-parse: 2.7.0
     optionalDependencies:
       zod: 3.23.8
 
-  '@ai-sdk/vue@0.0.12(vue@3.4.31(typescript@5.1.6))(zod@3.23.8)':
+  '@ai-sdk/vue@0.0.13(vue@3.4.31(typescript@5.1.6))(zod@3.23.8)':
     dependencies:
-      '@ai-sdk/ui-utils': 0.0.10(zod@3.23.8)
+      '@ai-sdk/ui-utils': 0.0.11(zod@3.23.8)
       swrv: 1.0.4(vue@3.4.31(typescript@5.1.6))
     optionalDependencies:
       vue: 3.4.31(typescript@5.1.6)
@@ -4591,34 +4597,35 @@ snapshots:
   '@jridgewell/gen-mapping@0.3.5':
     dependencies:
       '@jridgewell/set-array': 1.2.1
-      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/sourcemap-codec': 1.5.0
       '@jridgewell/trace-mapping': 0.3.25
 
   '@jridgewell/resolve-uri@3.1.2': {}
 
   '@jridgewell/set-array@1.2.1': {}
 
-  '@jridgewell/sourcemap-codec@1.4.15': {}
+  '@jridgewell/sourcemap-codec@1.5.0': {}
 
   '@jridgewell/trace-mapping@0.3.25':
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
-      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@langchain/community@0.2.17(@supabase/postgrest-js@1.15.8)(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(lodash@4.17.21)(openai@4.52.4)(ws@8.18.0)':
+  '@langchain/community@0.2.18(@langchain/langgraph@0.0.25(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5))(@supabase/postgrest-js@1.15.8)(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(lodash@4.17.21)(openai@4.52.5)(ws@8.18.0)':
     dependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
-      '@langchain/openai': 0.1.3(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))
+      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
+      '@langchain/openai': 0.1.3(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))
       binary-extensions: 2.3.0
       expr-eval: 2.0.2
       flat: 5.0.2
       js-yaml: 4.1.0
-      langchain: 0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0)
-      langsmith: 0.1.36(@langchain/core@0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4))(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
-      uuid: 9.0.1
+      langchain: 0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0)
+      langsmith: 0.1.36(@langchain/core@0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5))(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
+      uuid: 10.0.0
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
     optionalDependencies:
+      '@langchain/langgraph': 0.0.25(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       '@supabase/postgrest-js': 1.15.8
       '@supabase/supabase-js': 2.44.3
       cheerio: 1.0.0-rc.12
@@ -4635,13 +4642,13 @@ snapshots:
       - peggy
       - pyodide
 
-  '@langchain/core@0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)':
+  '@langchain/core@0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)':
     dependencies:
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.12
-      langsmith: 0.1.36(@langchain/core@0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4))(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      langsmith: 0.1.36(@langchain/core@0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5))(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       ml-distance: 4.0.1
       mustache: 4.2.0
       p-queue: 6.6.2
@@ -4653,13 +4660,13 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/core@0.2.10(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)':
+  '@langchain/core@0.2.10(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)':
     dependencies:
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.12
-      langsmith: 0.1.36(@langchain/core@0.2.10(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4))(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      langsmith: 0.1.36(@langchain/core@0.2.10(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5))(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       ml-distance: 4.0.1
       mustache: 4.2.0
       p-queue: 6.6.2
@@ -4671,58 +4678,58 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/langgraph@0.0.25(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)':
+  '@langchain/langgraph@0.0.25(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)':
     dependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      '@langchain/core': 0.2.10(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       uuid: 9.0.1
     transitivePeerDependencies:
       - langchain
       - openai
 
-  '@langchain/openai@0.0.34(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))':
+  '@langchain/openai@0.0.34(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))':
     dependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       js-tiktoken: 1.0.12
-      openai: 4.52.4
+      openai: 4.52.5
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
     transitivePeerDependencies:
       - encoding
       - langchain
 
-  '@langchain/openai@0.1.3(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))':
+  '@langchain/openai@0.1.3(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))':
     dependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       js-tiktoken: 1.0.12
-      openai: 4.52.4
+      openai: 4.52.5
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
     transitivePeerDependencies:
       - encoding
       - langchain
 
-  '@langchain/openai@0.2.1(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))':
+  '@langchain/openai@0.2.1(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))':
     dependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      '@langchain/core': 0.2.10(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       js-tiktoken: 1.0.12
-      openai: 4.52.4
+      openai: 4.52.5
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
     transitivePeerDependencies:
       - encoding
       - langchain
 
-  '@langchain/textsplitters@0.0.3(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)':
+  '@langchain/textsplitters@0.0.3(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)':
     dependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       js-tiktoken: 1.0.12
     transitivePeerDependencies:
       - langchain
       - openai
 
-  '@langchain/textsplitters@0.0.3(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)':
+  '@langchain/textsplitters@0.0.3(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)':
     dependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      '@langchain/core': 0.2.10(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       js-tiktoken: 1.0.12
     transitivePeerDependencies:
       - langchain
@@ -5836,15 +5843,15 @@ snapshots:
     dependencies:
       humanize-ms: 1.2.1
 
-  ai@3.2.18(openai@4.52.4)(react@18.3.1)(svelte@4.2.18)(vue@3.4.31(typescript@5.1.6))(zod@3.23.8):
+  ai@3.2.19(openai@4.52.5)(react@18.3.1)(svelte@4.2.18)(vue@3.4.31(typescript@5.1.6))(zod@3.23.8):
     dependencies:
-      '@ai-sdk/provider': 0.0.11
-      '@ai-sdk/provider-utils': 1.0.1(zod@3.23.8)
-      '@ai-sdk/react': 0.0.18(react@18.3.1)(zod@3.23.8)
-      '@ai-sdk/solid': 0.0.12(zod@3.23.8)
-      '@ai-sdk/svelte': 0.0.13(svelte@4.2.18)(zod@3.23.8)
-      '@ai-sdk/ui-utils': 0.0.10(zod@3.23.8)
-      '@ai-sdk/vue': 0.0.12(vue@3.4.31(typescript@5.1.6))(zod@3.23.8)
+      '@ai-sdk/provider': 0.0.12
+      '@ai-sdk/provider-utils': 1.0.2(zod@3.23.8)
+      '@ai-sdk/react': 0.0.19(react@18.3.1)(zod@3.23.8)
+      '@ai-sdk/solid': 0.0.13(zod@3.23.8)
+      '@ai-sdk/svelte': 0.0.14(svelte@4.2.18)(zod@3.23.8)
+      '@ai-sdk/ui-utils': 0.0.11(zod@3.23.8)
+      '@ai-sdk/vue': 0.0.13(vue@3.4.31(typescript@5.1.6))(zod@3.23.8)
       eventsource-parser: 1.1.2
       json-schema: 0.4.0
       jsondiffpatch: 0.6.0
@@ -5853,7 +5860,7 @@ snapshots:
       sswr: 2.1.0(svelte@4.2.18)
       zod-to-json-schema: 3.22.5(zod@3.23.8)
     optionalDependencies:
-      openai: 4.52.4
+      openai: 4.52.5
       react: 18.3.1
       svelte: 4.2.18
       zod: 3.23.8
@@ -5983,8 +5990,8 @@ snapshots:
 
   autoprefixer@10.4.14(postcss@8.4.27):
     dependencies:
-      browserslist: 4.23.1
-      caniuse-lite: 1.0.30001640
+      browserslist: 4.23.2
+      caniuse-lite: 1.0.30001641
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.1
@@ -6037,12 +6044,12 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  browserslist@4.23.1:
+  browserslist@4.23.2:
     dependencies:
-      caniuse-lite: 1.0.30001640
-      electron-to-chromium: 1.4.820
+      caniuse-lite: 1.0.30001641
+      electron-to-chromium: 1.4.823
       node-releases: 2.0.14
-      update-browserslist-db: 1.1.0(browserslist@4.23.1)
+      update-browserslist-db: 1.1.0(browserslist@4.23.2)
 
   busboy@1.6.0:
     dependencies:
@@ -6062,7 +6069,7 @@ snapshots:
 
   camelcase@6.3.0: {}
 
-  caniuse-lite@1.0.30001640: {}
+  caniuse-lite@1.0.30001641: {}
 
   ccount@2.0.1: {}
 
@@ -6138,7 +6145,7 @@ snapshots:
 
   code-red@1.0.4:
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/sourcemap-codec': 1.5.0
       '@types/estree': 1.0.5
       acorn: 8.12.1
       estree-walker: 3.0.3
@@ -6316,7 +6323,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.4.820: {}
+  electron-to-chromium@1.4.823: {}
 
   embla-carousel-react@8.1.6(react@18.3.1):
     dependencies:
@@ -7126,17 +7133,17 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0):
+  langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0):
     dependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
-      '@langchain/openai': 0.0.34(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))
-      '@langchain/textsplitters': 0.0.3(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
+      '@langchain/openai': 0.0.34(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))
+      '@langchain/textsplitters': 0.0.3(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       binary-extensions: 2.3.0
       js-tiktoken: 1.0.12
       js-yaml: 4.1.0
       jsonpointer: 5.0.1
       langchainhub: 0.0.11
-      langsmith: 0.1.36(@langchain/core@0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4))(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      langsmith: 0.1.36(@langchain/core@0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5))(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       ml-distance: 4.0.1
       openapi-types: 12.1.3
       p-retry: 4.6.2
@@ -7153,21 +7160,21 @@ snapshots:
       - encoding
       - openai
 
-  langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0):
+  langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0):
     dependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
-      '@langchain/openai': 0.2.1(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))
-      '@langchain/textsplitters': 0.0.3(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      '@langchain/core': 0.2.10(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
+      '@langchain/openai': 0.2.1(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))
+      '@langchain/textsplitters': 0.0.3(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       binary-extensions: 2.3.0
       js-tiktoken: 1.0.12
       js-yaml: 4.1.0
       jsonpointer: 5.0.1
       langchainhub: 0.0.11
-      langsmith: 0.1.36(@langchain/core@0.2.10(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4))(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
+      langsmith: 0.1.36(@langchain/core@0.2.10(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5))(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
       ml-distance: 4.0.1
       openapi-types: 12.1.3
       p-retry: 4.6.2
-      uuid: 9.0.1
+      uuid: 10.0.0
       yaml: 2.4.5
       zod: 3.23.8
       zod-to-json-schema: 3.23.1(zod@3.23.8)
@@ -7182,7 +7189,7 @@ snapshots:
 
   langchainhub@0.0.11: {}
 
-  langsmith@0.1.36(@langchain/core@0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4))(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4):
+  langsmith@0.1.36(@langchain/core@0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5))(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5):
     dependencies:
       '@types/uuid': 9.0.8
       commander: 10.0.1
@@ -7190,11 +7197,11 @@ snapshots:
       p-retry: 4.6.2
       uuid: 9.0.1
     optionalDependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
-      langchain: 0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0)
-      openai: 4.52.4
+      '@langchain/core': 0.2.10(langchain@0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
+      langchain: 0.2.3(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0)
+      openai: 4.52.5
 
-  langsmith@0.1.36(@langchain/core@0.2.10(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4))(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4):
+  langsmith@0.1.36(@langchain/core@0.2.10(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5))(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5):
     dependencies:
       '@types/uuid': 9.0.8
       commander: 10.0.1
@@ -7202,9 +7209,9 @@ snapshots:
       p-retry: 4.6.2
       uuid: 9.0.1
     optionalDependencies:
-      '@langchain/core': 0.2.10(langchain@0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0))(openai@4.52.4)
-      langchain: 0.2.8(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.4)(ws@8.18.0)
-      openai: 4.52.4
+      '@langchain/core': 0.2.10(langchain@0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0))(openai@4.52.5)
+      langchain: 0.2.9(@supabase/supabase-js@2.44.3)(cheerio@1.0.0-rc.12)(ignore@5.3.1)(openai@4.52.5)(ws@8.18.0)
+      openai: 4.52.5
 
   language-subtag-registry@0.3.23: {}
 
@@ -7239,7 +7246,7 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  lru-cache@10.4.2: {}
+  lru-cache@10.4.3: {}
 
   lucide-react@0.400.0(react@18.3.1):
     dependencies:
@@ -7247,7 +7254,7 @@ snapshots:
 
   magic-string@0.30.10:
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/sourcemap-codec': 1.5.0
 
   markdown-table@3.0.3: {}
 
@@ -7702,7 +7709,7 @@ snapshots:
       '@next/env': 14.2.4
       '@swc/helpers': 0.5.5
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001640
+      caniuse-lite: 1.0.30001641
       graceful-fs: 4.2.11
       postcss: 8.4.31
       react: 18.3.1
@@ -7803,7 +7810,7 @@ snapshots:
     dependencies:
       wrappy: 1.0.2
 
-  openai@4.52.4:
+  openai@4.52.5:
     dependencies:
       '@types/node': 18.19.39
       '@types/node-fetch': 2.6.11
@@ -7889,7 +7896,7 @@ snapshots:
 
   path-scurry@1.11.1:
     dependencies:
-      lru-cache: 10.4.2
+      lru-cache: 10.4.3
       minipass: 7.1.2
 
   path-type@4.0.0: {}
@@ -8355,7 +8362,7 @@ snapshots:
   svelte@4.2.18:
     dependencies:
       '@ampproject/remapping': 2.3.0
-      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/sourcemap-codec': 1.5.0
       '@jridgewell/trace-mapping': 0.3.25
       '@types/estree': 1.0.5
       acorn: 8.12.1
@@ -8553,9 +8560,9 @@ snapshots:
       unist-util-is: 6.0.0
       unist-util-visit-parents: 6.0.1
 
-  update-browserslist-db@1.1.0(browserslist@4.23.1):
+  update-browserslist-db@1.1.0(browserslist@4.23.2):
     dependencies:
-      browserslist: 4.23.1
+      browserslist: 4.23.2
       escalade: 3.1.2
       picocolors: 1.0.1
 
@@ -8583,6 +8590,8 @@ snapshots:
       react: 18.3.1
 
   util-deprecate@1.0.2: {}
+
+  uuid@10.0.0: {}
 
   uuid@9.0.1: {}
 
