@@ -13,34 +13,18 @@ type Props = {
 };
 
 async function Layout({ children }: Props) {
-  const chats = await new Promise<Tables<"chats">[]>((resolve) => {
-    resolve([
-      {
-        id: "1",
-        name: "Chat 1",
-        created_at: new Date().toISOString(),
-        user_id: "abc",
-      },
-      {
-        id: "2",
-        name: "Chat 2 with a much longer name to test button sizes",
-        created_at: new Date().toISOString(),
-        user_id: "abc",
-      },
-      {
-        id: "3",
-        name: "Chat 3",
-        created_at: new Date().toISOString(),
-        user_id: "abc",
-      },
-    ]);
-  });
-
   const supabase = createClient();
   const { data, error } = await supabase.auth.getUser();
 
   if (error) redirect("/error");
   const { user } = data;
+
+  const { data: chats, error: chatsError } = await supabase
+    .from("chats")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (chatsError) redirect("/error");
 
   return (
     <>
