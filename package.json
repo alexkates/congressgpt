@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"app\"",
-    "supabase:generate-types": "supabase gen types typescript --linked --schema public > types/supabase.ts"
+    "supabase:reset-db": "supabase db reset --linked",
+    "supabase:generate-types": "supabase gen types --lang=typescript --linked --schema public > types/supabase.ts"
   },
   "engines": {
     "node": ">=18"

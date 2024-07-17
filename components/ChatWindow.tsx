@@ -7,15 +7,16 @@ import type { FormEvent } from "react";
 import { ChatMessage } from "@/components/ChatMessage";
 import ChatMessageForm from "./ChatMessageForm";
 import { Card, CardHeader, CardDescription } from "./ui/card";
-import { createClient } from "@/supabase/server";
-import { redirect } from "next/navigation";
 import { createChat } from "@/app/chat/[id]/actions";
+import { createClient } from "@/supabase/client";
+import { randomUUID as generateId } from "crypto";
 
 type Props = {
+  chatId?: string;
   initialMessages?: Message[];
 };
 
-export function ChatWindow({ initialMessages }: Props) {
+export function ChatWindow({ chatId, initialMessages }: Props) {
   const [sourcesForMessages, setSourcesForMessages] = useState<
     Record<string, any>
   >({});
@@ -30,8 +31,18 @@ export function ChatWindow({ initialMessages }: Props) {
   } = useChat({
     api: "/chat/completions",
     initialMessages,
+    generateId,
     onFinish(message) {
-      console.log(`Finished message: ${JSON.stringify(message, null, 2)}`);
+      console.log("onFinish", message);
+      // if (!chatId) return;
+
+      // const client = createClient();
+      // return client.from("chat_messages").insert({
+      //   chat_id: chatId,
+      //   content: message.content,
+      //   role: message.role,
+      //   id: message.id,
+      // });
     },
 
     onResponse(response) {
@@ -53,8 +64,6 @@ export function ChatWindow({ initialMessages }: Props) {
   async function sendMessage(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (chatEndpointIsLoading) return;
-
-    console.log(`Message sent: ${JSON.stringify(input, null, 2)}`);
 
     handleSubmit(e);
   }

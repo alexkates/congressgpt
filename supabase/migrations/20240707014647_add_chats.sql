@@ -48,8 +48,8 @@ CREATE TABLE
   chat_messages (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid (),
     chat_id UUID REFERENCES chats (id) NOT NULL,
-    CONTENT TEXT,
-    ROLE TEXT,
+    CONTENT TEXT NOT NULL,
+    ROLE TEXT NOT NULL,
     created_at TIMESTAMP
     WITH
       TIME ZONE DEFAULT timezone ('utc', NOW ()) NOT NULL
