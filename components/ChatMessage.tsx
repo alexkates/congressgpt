@@ -35,28 +35,25 @@ export function ChatMessage({ message, sources }: Props) {
         {message.content}
       </MemoizedReactMarkdown>
       {distinctSources?.length > 0 && (
-        <div>
-          <h2>🔍 Sources:</h2>
-          <ul>
-            {distinctSources.map((title, i) => {
-              const source = sources.find(
-                (source) => source.metadata.title === title,
-              );
-              return (
-                <li key={i}>
-                  <a
-                    href={source.metadata.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="underline"
-                  >
-                    {source.metadata.title}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <ul>
+          {distinctSources.map((title, i) => {
+            const source = sources.find(
+              (source) => source.metadata.title === title,
+            );
+            return (
+              <li key={i}>
+                <a
+                  href={source.metadata.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline text-xs text-muted-foreground"
+                >
+                  {source.metadata.title}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       )}
     </div>
   );

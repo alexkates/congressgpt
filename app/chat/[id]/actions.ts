@@ -31,5 +31,5 @@ export async function createChat(content: string) {
     return;
   }
 
-  return redirect(`/chat/${newChat.id}`);
+  redirect(`/chat/${newChat.id}`);
 }
