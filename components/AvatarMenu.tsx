@@ -12,11 +12,11 @@ import { LogOut, UserIcon } from "lucide-react";
 import { createClient } from "@/supabase/server";
 import { redirect } from "next/navigation";
 
-type Props = {
-  user: User;
-};
+export default async function AvatarMenu() {
+  const client = createClient();
+  const { data, error } = await client.auth.getUser();
+  if (error) redirect("/error");
 
-export default function AvatarMenu({ user }: Props) {
   async function signOut() {
     "use server";
 
@@ -30,7 +30,7 @@ export default function AvatarMenu({ user }: Props) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar>
-          <AvatarImage src={user.user_metadata.avatar_url} />
+          <AvatarImage src={data.user.user_metadata.avatar_url} />
           <AvatarFallback>
             <UserIcon />
           </AvatarFallback>

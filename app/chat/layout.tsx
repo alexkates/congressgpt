@@ -14,10 +14,6 @@ type Props = {
 
 async function Layout({ children }: Props) {
   const supabase = createClient();
-  const { data, error } = await supabase.auth.getUser();
-
-  if (error) redirect("/error");
-  const { user } = data;
 
   const { data: chats, error: chatsError } = await supabase
     .from("chats")
@@ -41,7 +37,7 @@ async function Layout({ children }: Props) {
             <ChatList chats={chats} />
           </section>
           <section>
-            <AvatarMenu user={user} />
+            <AvatarMenu />
           </section>
         </aside>
         <section className="grow">{children}</section>
