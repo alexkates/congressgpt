@@ -16,6 +16,7 @@ export type Database = {
           created_at: string
           id: string
           role: string
+          sources: Json | null
         }
         Insert: {
           chat_id: string
@@ -23,6 +24,7 @@ export type Database = {
           created_at?: string
           id?: string
           role: string
+          sources?: Json | null
         }
         Update: {
           chat_id?: string
@@ -30,6 +32,7 @@ export type Database = {
           created_at?: string
           id?: string
           role?: string
+          sources?: Json | null
         }
         Relationships: [
           {

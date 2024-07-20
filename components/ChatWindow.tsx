@@ -2,47 +2,50 @@
 
 import { Message, useChat } from "ai/react";
 import { useState } from "react";
-import type { FormEvent } from "react";
 
 import { ChatMessage } from "@/components/ChatMessage";
 import ChatMessageForm from "./ChatMessageForm";
 import { Card, CardHeader, CardDescription } from "./ui/card";
-import { createChat } from "@/app/chat/[id]/actions";
 import { createClient } from "@/supabase/client";
-import { randomUUID as generateId } from "crypto";
+import { v4 as generateId } from "uuid";
+import { useRouter } from "next/navigation";
 
 type Props = {
   chatId?: string;
   initialMessages?: Message[];
 };
 
+type SourceForMessage = Record<string, any>;
+
+const prompts = [
+  "Summarize a random bill",
+  "What is the legislative process",
+  "Tell me about an environmental bill",
+  "Who introduced the last bill",
+  "When was your last bill passed",
+  "Quiz me on recent legislation",
+];
+
 export function ChatWindow({ chatId, initialMessages }: Props) {
-  const [sourcesForMessages, setSourcesForMessages] = useState<
-    Record<string, any>
-  >({});
+  const [sourcesForMessages, setSourcesForMessages] =
+    useState<SourceForMessage>({});
+
+  const router = useRouter();
 
   const {
     messages,
     input,
     handleInputChange,
     handleSubmit,
-    setInput,
+    append,
     isLoading: chatEndpointIsLoading,
   } = useChat({
     api: "/chat/completions",
     initialMessages,
     generateId,
-    onFinish(message) {
-      console.log("onFinish", message);
-      // if (!chatId) return;
-
-      // const client = createClient();
-      // return client.from("chat_messages").insert({
-      //   chat_id: chatId,
-      //   content: message.content,
-      //   role: message.role,
-      //   id: message.id,
-      // });
+    streamMode: "text",
+    async onFinish(message) {
+      await saveChatMessage(message);
     },
 
     onResponse(response) {
@@ -58,28 +61,7 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
         });
       }
     },
-    streamMode: "text",
   });
-
-  async function sendMessage(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (chatEndpointIsLoading) return;
-
-    handleSubmit(e);
-  }
-
-  async function initializeNewChat() {
-    await createChat(input);
-  }
-
-  const prompts = [
-    "Summarize a random bill",
-    "What is the legislative process",
-    "Tell me about an environmental bill",
-    "Who introduced the last bill",
-    "When was your last bill passed",
-    "Quiz me on recent legislation",
-  ];
 
   return (
     <div className={"flex flex-col min-h-screen"}>
@@ -92,15 +74,16 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
             </p>
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
               {prompts.map((prompt) => (
-                <form key={prompt} onSubmit={initializeNewChat}>
-                  <button type="submit" onClick={() => setInput(prompt)}>
-                    <Card className="max-w-[200px] cursor-pointer hover:border-primary transition-colors duration-200 ease-in-out">
-                      <CardHeader>
-                        <CardDescription>{prompt}</CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </button>
-                </form>
+                <button
+                  key={prompt}
+                  onClick={() => append({ content: prompt, role: "user" })}
+                >
+                  <Card className="max-w-[200px] cursor-pointer hover:border-primary transition-colors duration-200 ease-in-out">
+                    <CardHeader>
+                      <CardDescription>{prompt}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </button>
               ))}
             </div>
           </div>
@@ -123,9 +106,62 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
         <ChatMessageForm
           handleInputChange={handleInputChange}
           input={input}
-          sendMessage={sendMessage}
+          sendMessage={(e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            if (chatEndpointIsLoading) return;
+
+            saveChatMessage({
+              content: input,
+              role: "user",
+              id: generateId(),
+            });
+
+            handleSubmit(e);
+          }}
         />
       </div>
     </div>
   );
+
+  async function saveChatMessage(message: Message) {
+    const client = createClient();
+
+    if (!chatId) {
+      const { data: userData, error: getUserError } =
+        await client.auth.getUser();
+      if (getUserError) throw getUserError;
+
+      const { data: chatInsertResults, error: createChatError } = await client
+        .from("chats")
+        .insert({
+          user_id: userData.user.id,
+          name: new Date().toLocaleString(),
+        })
+        .select();
+      if (createChatError) throw createChatError;
+      const newChat = chatInsertResults[0];
+
+      const { error: createChatMessageError } = await client
+        .from("chat_messages")
+        .insert({
+          chat_id: newChat.id,
+          content: message.content,
+          role: message.role,
+          sources: sourcesForMessages[messages.length - 1],
+        });
+      if (createChatMessageError) throw createChatMessageError;
+
+      router.push(`/chat/${newChat.id}`);
+    } else {
+      const { error: createChatMessageError } = await client
+        .from("chat_messages")
+        .insert({
+          chat_id: chatId,
+          content: message.content,
+          role: message.role,
+          sources: sourcesForMessages[messages.length - 1],
+        });
+      if (createChatMessageError) throw createChatMessageError;
+    }
+  }
 }

@@ -2,7 +2,7 @@ CREATE TABLE
   chats (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid (),
     user_id UUID REFERENCES auth.users NOT NULL,
-    NAME TEXT,
+    name TEXT,
     created_at TIMESTAMP
     WITH
       TIME ZONE DEFAULT timezone ('utc', NOW ()) NOT NULL
@@ -48,8 +48,9 @@ CREATE TABLE
   chat_messages (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid (),
     chat_id UUID REFERENCES chats (id) NOT NULL,
-    CONTENT TEXT NOT NULL,
-    ROLE TEXT NOT NULL,
+    content TEXT NOT NULL,
+    sources JSON,
+    role TEXT NOT NULL,
     created_at TIMESTAMP
     WITH
       TIME ZONE DEFAULT timezone ('utc', NOW ()) NOT NULL
