@@ -18,10 +18,9 @@ export default async function Page({ params }: Props) {
     .from("chat_messages")
     .select("*")
     .eq("chat_id", id)
-    .order("created_at", { ascending: true })
-    .returns<Message[]>();
+    .order("created_at", { ascending: true });
 
   if (error) throw error;
 
-  return <ChatWindow initialMessages={messages ?? undefined} chatId={id} />;
+  return <ChatWindow initialMessages={messages} chatId={id} />;
 }

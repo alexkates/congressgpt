@@ -8,14 +8,14 @@ import ChatMessageForm from "./ChatMessageForm";
 import { Card, CardHeader, CardDescription } from "./ui/card";
 import { createClient } from "@/supabase/client";
 import { v4 as generateId } from "uuid";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
   chatId?: string;
-  initialMessages?: Message[];
+  initialMessages?: any[];
 };
 
-type SourceForMessage = Record<string, any>;
+type SourcesByMessageIndex = Record<string, any>;
 
 const prompts = [
   "Summarize a random bill",
@@ -28,9 +28,20 @@ const prompts = [
 
 export function ChatWindow({ chatId, initialMessages }: Props) {
   const [sourcesForMessages, setSourcesForMessages] =
-    useState<SourceForMessage>({});
+    useState<SourcesByMessageIndex>(() => {
+      const initialSources: SourcesByMessageIndex = {};
+
+      initialMessages?.forEach((message, i) => {
+        if (message.sources) {
+          initialSources[i] = message.sources;
+        }
+      });
+
+      return initialSources;
+    });
 
   const router = useRouter();
+  const pathname = usePathname();
 
   const {
     messages,
@@ -45,9 +56,17 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
     generateId,
     streamMode: "text",
     async onFinish(message) {
-      await saveChatMessage(message);
-    },
+      if (!chatId) {
+        const chat = await createChat();
+        chatId = chat.id;
+      }
 
+      await createChatMessage(chatId, message);
+
+      if (pathname !== `/chat/${chatId}`) {
+        router.push(`/chat/${chatId}`);
+      }
+    },
     onResponse(response) {
       const sourcesHeader = response.headers.get("x-sources");
       const sources = sourcesHeader
@@ -76,7 +95,22 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
               {prompts.map((prompt) => (
                 <button
                   key={prompt}
-                  onClick={() => append({ content: prompt, role: "user" })}
+                  onClick={async () => {
+                    if (!chatId) {
+                      const chat = await createChat();
+                      chatId = chat.id;
+                    }
+                    await createChatMessage(chatId, {
+                      content: prompt,
+                      role: "user",
+                      id: generateId(),
+                    });
+
+                    await append({
+                      content: prompt,
+                      role: "user",
+                    });
+                  }}
                 >
                   <Card className="max-w-[200px] cursor-pointer hover:border-primary transition-colors duration-200 ease-in-out">
                     <CardHeader>
@@ -95,7 +129,7 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
               <ChatMessage
                 key={i}
                 message={message}
-                sources={sourcesForMessages[i]}
+                sources={sourcesForMessages?.[i]}
               />
             ))}
           </div>
@@ -106,11 +140,16 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
         <ChatMessageForm
           handleInputChange={handleInputChange}
           input={input}
-          sendMessage={(e: React.FormEvent<HTMLFormElement>) => {
+          sendMessage={async (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
             if (chatEndpointIsLoading) return;
 
-            saveChatMessage({
+            if (!chatId) {
+              const chat = await createChat();
+              chatId = chat.id;
+            }
+
+            await createChatMessage(chatId, {
               content: input,
               role: "user",
               id: generateId(),
@@ -123,45 +162,45 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
     </div>
   );
 
-  async function saveChatMessage(message: Message) {
+  async function createChat() {
     const client = createClient();
 
-    if (!chatId) {
-      const { data: userData, error: getUserError } =
-        await client.auth.getUser();
-      if (getUserError) throw getUserError;
+    const { data, error: getUserError } = await client.auth.getUser();
+    if (getUserError) throw getUserError;
 
-      const { data: chatInsertResults, error: createChatError } = await client
-        .from("chats")
-        .insert({
-          user_id: userData.user.id,
-          name: new Date().toLocaleString(),
-        })
-        .select();
-      if (createChatError) throw createChatError;
-      const newChat = chatInsertResults[0];
+    const { user } = data;
 
-      const { error: createChatMessageError } = await client
-        .from("chat_messages")
-        .insert({
-          chat_id: newChat.id,
-          content: message.content,
-          role: message.role,
-          sources: sourcesForMessages[messages.length - 1],
-        });
-      if (createChatMessageError) throw createChatMessageError;
+    const { data: chat, error: createChatError } = await client
+      .from("chats")
+      .insert({
+        id: generateId(),
+        user_id: user.id,
+        name: `New Chat ${new Date().toLocaleString()}`,
+      })
+      .select();
 
-      router.push(`/chat/${newChat.id}`);
-    } else {
-      const { error: createChatMessageError } = await client
-        .from("chat_messages")
-        .insert({
-          chat_id: chatId,
-          content: message.content,
-          role: message.role,
-          sources: sourcesForMessages[messages.length - 1],
-        });
-      if (createChatMessageError) throw createChatMessageError;
-    }
+    if (createChatError) throw createChatError;
+
+    return chat[0];
+  }
+
+  async function createChatMessage(chatId: string, message: Message) {
+    const client = createClient();
+
+    const sources =
+      message.role === "assistant"
+        ? sourcesForMessages[messages?.length - 1]
+        : undefined;
+
+    const { error: createChatMessageError } = await client
+      .from("chat_messages")
+      .insert({
+        chat_id: chatId,
+        content: message.content,
+        role: message.role,
+        sources,
+      });
+
+    if (createChatMessageError) throw createChatMessageError;
   }
 }
