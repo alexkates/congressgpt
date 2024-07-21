@@ -1,4 +1,4 @@
-import { CornerDownLeft } from "lucide-react";
+import { Command, CornerDownLeft } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -15,6 +15,16 @@ export default function ChatMessageForm({
   handleInputChange,
   sendMessage,
 }: Props) {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+      e.preventDefault();
+      const form = e.currentTarget.closest("form");
+      if (form) {
+        form.requestSubmit();
+      }
+    }
+  };
+
   return (
     <form
       onSubmit={sendMessage}
@@ -29,11 +39,13 @@ export default function ChatMessageForm({
         className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0"
         value={input}
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
       />
       <div className="flex items-center p-3 pt-0">
         <Button type="submit" size="sm" className="ml-auto gap-1.5">
           Send Message
-          <CornerDownLeft className="size-3.5" />
+          <Command className="w-4" />
+          <CornerDownLeft className="w-4" />
         </Button>
       </div>
     </form>
