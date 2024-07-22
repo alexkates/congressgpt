@@ -14,7 +14,7 @@ export default function ChatList({ chats }: Props) {
   const isActive = (path: string) => pathname === path.split("?")[0];
 
   return (
-    <ul className="flex flex-col gap-4">
+    <ul className="flex flex-col gap-4 ">
       {chats.map((chat) => {
         const href = `/chat/${chat.id}`;
         const activeClass = isActive(href) ? "default" : "ghost";

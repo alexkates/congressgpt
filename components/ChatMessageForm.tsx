@@ -35,17 +35,19 @@ export default function ChatMessageForm({
       </Label>
       <Textarea
         id="message"
-        placeholder="Type your message here..."
+        placeholder="Tell me about the most recent bill introduced in the Senate."
         className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0"
         value={input}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />
-      <div className="flex items-center p-3 pt-0">
-        <Button type="submit" size="sm" className="ml-auto gap-1.5">
-          Send Message
-          <Command className="w-4" />
-          <CornerDownLeft className="w-4" />
+      <div className="flex items-center p-3 pt-0 float-right">
+        <Button type="submit" size="sm" className="gap-4">
+          <span>Send</span>
+          <div className="flex items-center gap-1">
+            <Command className="w-4" />
+            <CornerDownLeft className="w-4" />
+          </div>
         </Button>
       </div>
     </form>

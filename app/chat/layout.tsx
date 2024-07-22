@@ -1,9 +1,15 @@
 import AvatarMenu from "@/components/AvatarMenu";
 import ChatList from "@/components/ChatList";
 import MobileChatList from "@/components/MobileChatList";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 import { createClient } from "@/supabase/server";
-import { Tables } from "@/types/supabase";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -23,26 +29,26 @@ async function Layout({ children }: Props) {
   if (chatsError) redirect("/error");
 
   return (
-    <>
-      <div className="md:hidden">
+    <main className="flex flex-col md:flex-row h-screen w-full">
+      <aside className="md:hidden">
         <MobileChatList chats={chats} />
-      </div>
+      </aside>
+      <aside className="hidden md:flex flex-col p-4">
+        <section>
+          <Link href="/chat" className="font-bold">
+            CongressGPT
+          </Link>
+        </section>
+        <section className="flex-grow overflow-auto mt-4">
+          <ChatList chats={chats} />
+        </section>
+        <section className="mt-4">
+          <AvatarMenu />
+        </section>
+      </aside>
 
-      <main className="flex">
-        <aside className="hidden md:flex flex-col p-4 min-h-screen">
-          <section className="flex flex-col gap-4 grow">
-            <Link href="/chat" className="font-bold">
-              CongressGPT
-            </Link>
-            <ChatList chats={chats} />
-          </section>
-          <section>
-            <AvatarMenu />
-          </section>
-        </aside>
-        <section className="grow">{children}</section>
-      </main>
-    </>
+      <section className="flex-grow">{children}</section>
+    </main>
   );
 }
 
