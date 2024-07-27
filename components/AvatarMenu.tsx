@@ -1,10 +1,7 @@
-import { User } from "@supabase/supabase-js";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -37,8 +34,6 @@ export default async function AvatarMenu() {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="ml-4 mb-2">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
         <DropdownMenuItem>
           <form action={signOut}>
             <button type="submit" className="flex items-center gap-2">

@@ -1,6 +1,7 @@
 import AvatarMenu from "@/components/AvatarMenu";
 import ChatList from "@/components/ChatList";
 import MobileChatList from "@/components/MobileChatList";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -42,8 +43,9 @@ async function Layout({ children }: Props) {
         <section className="flex-grow overflow-auto mt-4">
           <ChatList chats={chats} />
         </section>
-        <section className="mt-4">
+        <section className="mt-4 flex items-center justify-between">
           <AvatarMenu />
+          <ThemeToggle />
         </section>
       </aside>
 

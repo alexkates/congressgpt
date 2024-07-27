@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <title>CongressGPT</title>
-        {/* <link rel="shortcut icon" href="/images/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.svg" />
         <meta
           name="description"
           content="Starter template showing how to use LangChain in Next.js projects. See source code and deploy your own at https://github.com/langchain-ai/langchain-nextjs-template!"
@@ -35,7 +35,7 @@ export default function RootLayout({
           name="twitter:description"
           content="Starter template showing how to use LangChain in Next.js projects. See source code and deploy your own at https://github.com/langchain-ai/langchain-nextjs-template!"
         />
-        <meta name="twitter:image" content="/images/og-image.png" /> */}
+        <meta name="twitter:image" content="/images/og-image.png" />
       </head>
       <body
         className={cn(
