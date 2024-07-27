@@ -35,7 +35,15 @@ export default function MobileChatList({ chats }: Props) {
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col gap-4">
         <SheetHeader>
-          <SheetTitle className="text-left">CongressGPT</SheetTitle>
+          <SheetTitle className="text-left">
+            <MobileLink
+              href="/chat"
+              className="font-bold"
+              onOpenChange={setOpen}
+            >
+              CongressGPT
+            </MobileLink>
+          </SheetTitle>
         </SheetHeader>
         <ScrollArea className="h-screen">
           <div className="flex flex-col space-y-3">

@@ -9,6 +9,7 @@ import { Card, CardHeader, CardDescription } from "./ui/card";
 import { createClient } from "@/supabase/client";
 import { v4 as generateId } from "uuid";
 import { usePathname, useRouter } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 type Props = {
   chatId?: string;
@@ -57,7 +58,7 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
     streamMode: "text",
     async onFinish(message) {
       if (!chatId) {
-        const chat = await createChat();
+        const chat = await createChat(message.content);
         chatId = chat.id;
       }
 
@@ -85,19 +86,21 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
   return (
     <div className={"flex flex-col min-h-screen"}>
       {messages?.length === 0 ? (
-        <div className="flex flex-col grow items-center justify-center p-4">
-          <div className="grid place-items-center gap-4">
+        <div className="flex flex-col grow justify-center container gap-4">
+          <div>
             <h2 className="text-2xl font-semibold">Get started</h2>
             <p className="text-primary">
               Try one of the prompts below to get started.
             </p>
-            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          </div>
+          <div className="grid place-items-center gap-4">
+            <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
               {prompts.map((prompt) => (
                 <button
                   key={prompt}
                   onClick={async () => {
                     if (!chatId) {
-                      const chat = await createChat();
+                      const chat = await createChat(prompt);
                       chatId = chat.id;
                     }
                     await createChatMessage(chatId, {
@@ -145,7 +148,7 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
             if (chatEndpointIsLoading) return;
 
             if (!chatId) {
-              const chat = await createChat();
+              const chat = await createChat(input);
               chatId = chat.id;
             }
 
@@ -162,7 +165,7 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
     </div>
   );
 
-  async function createChat() {
+  async function createChat(title: string) {
     const client = createClient();
 
     const { data, error: getUserError } = await client.auth.getUser();
@@ -175,7 +178,7 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
       .insert({
         id: generateId(),
         user_id: user.id,
-        name: `New Chat ${new Date().toLocaleString()}`,
+        name: title,
       })
       .select();
 
