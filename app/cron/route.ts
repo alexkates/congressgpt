@@ -10,6 +10,9 @@ import * as entities from "entities";
 import Parser from "rss-parser";
 
 export async function POST(req: NextRequest) {
+  if (req.headers.get("Authorization") !== `Bearer ${process.env.CRON_SECRET}`)
+    return new Response(null, { status: 401 });
+
   const parser = new Parser();
   const feed = (await parser.parseURL(
     "https://www.govinfo.gov/rss/bills.xml",
