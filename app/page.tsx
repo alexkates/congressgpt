@@ -1,7 +1,4 @@
-import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
-import Link from "next/link";
-import { Gavel } from "lucide-react";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
 
 export default function Page() {
@@ -13,11 +10,7 @@ export default function Page() {
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
               <span>Finally</span> understand what
               <br />
-              Congress is{" "}
-              <span className="italic underline underline-offset-4 text-primary">
-                actually
-              </span>{" "}
-              doing
+              Congress is <span className="italic">actually</span> doing
             </h1>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
               Engage in real-time conversations with actual bills from Congress
