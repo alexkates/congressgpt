@@ -1,15 +1,15 @@
 "use client";
 
-import { Message, useChat } from "ai/react";
+import { useChat } from "ai/react";
 import { useState } from "react";
 
 import { ChatMessage } from "@/components/ChatMessage";
 import ChatMessageForm from "./ChatMessageForm";
 import { Card, CardHeader, CardDescription } from "./ui/card";
-import { createClient } from "@/supabase/client";
 import { v4 as generateId } from "uuid";
 import { usePathname, useRouter } from "next/navigation";
-import { revalidatePath } from "next/cache";
+import { createChat } from "@/actions/create-chat";
+import { createChatMessage } from "@/actions/create-chat-message";
 
 type Props = {
   chatId?: string;
@@ -54,7 +54,6 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
   } = useChat({
     api: "/chat/completions",
     initialMessages,
-    generateId,
     streamMode: "text",
     async onFinish(message) {
       if (!chatId) {
@@ -62,11 +61,12 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
         chatId = chat.id;
       }
 
-      await createChatMessage(chatId, message);
+      console.log(`Sources:`, sourcesForMessages);
+      const sources = sourcesForMessages[messages?.length];
 
-      if (pathname !== `/chat/${chatId}`) {
-        router.push(`/chat/${chatId}`);
-      }
+      await createChatMessage(chatId, sources, message);
+
+      if (pathname !== `/chat/${chatId}`) router.push(`/chat/${chatId}`);
     },
     onResponse(response) {
       const sourcesHeader = response.headers.get("x-sources");
@@ -87,8 +87,8 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
     <div className={"flex flex-col min-h-screen"}>
       {messages?.length === 0 ? (
         <div className="flex flex-col grow justify-center container gap-4">
-          <div>
-            <h2 className="text-2xl font-semibold">Get started</h2>
+          <div className="flex flex-col items-center">
+            <h2 className="text-2xl font-semibold">Welcome to CongressGPT</h2>
             <p className="text-primary">
               Try one of the prompts below to get started.
             </p>
@@ -103,7 +103,10 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
                       const chat = await createChat(prompt);
                       chatId = chat.id;
                     }
-                    await createChatMessage(chatId, {
+
+                    const sources = sourcesForMessages[messages?.length];
+
+                    await createChatMessage(chatId, sources, {
                       content: prompt,
                       role: "user",
                       id: generateId(),
@@ -152,7 +155,9 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
               chatId = chat.id;
             }
 
-            await createChatMessage(chatId, {
+            const sources = sourcesForMessages[messages?.length];
+
+            await createChatMessage(chatId, sources, {
               content: input,
               role: "user",
               id: generateId(),
@@ -164,46 +169,4 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
       </div>
     </div>
   );
-
-  async function createChat(title: string) {
-    const client = createClient();
-
-    const { data, error: getUserError } = await client.auth.getUser();
-    if (getUserError) throw getUserError;
-
-    const { user } = data;
-
-    const { data: chat, error: createChatError } = await client
-      .from("chats")
-      .insert({
-        id: generateId(),
-        user_id: user.id,
-        name: title,
-      })
-      .select();
-
-    if (createChatError) throw createChatError;
-
-    return chat[0];
-  }
-
-  async function createChatMessage(chatId: string, message: Message) {
-    const client = createClient();
-
-    const sources =
-      message.role === "assistant"
-        ? sourcesForMessages[messages?.length - 1]
-        : undefined;
-
-    const { error: createChatMessageError } = await client
-      .from("chat_messages")
-      .insert({
-        chat_id: chatId,
-        content: message.content,
-        role: message.role,
-        sources,
-      });
-
-    if (createChatMessageError) throw createChatMessageError;
-  }
 }

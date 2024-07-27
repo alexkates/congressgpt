@@ -20,13 +20,11 @@ export default function ChatList({ chats }: Props) {
         const activeClass = isActive(href) ? "default" : "ghost";
 
         return (
-          <li key={chat.id}>
+          <li key={chat.id} className="px-2">
             <Button variant={activeClass} asChild>
               <Link href={href}>
                 <div className="flex">
-                  <span className="w-40 lg:w-520 overflow-hidden">
-                    {chat.name}
-                  </span>
+                  <span className="w-40 truncate">{chat.name}</span>
                 </div>
               </Link>
             </Button>
