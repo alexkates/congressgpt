@@ -2,7 +2,6 @@
 
 import { createClient } from "@/supabase/client";
 import { Button } from "./ui/button";
-import { Gavel } from "lucide-react";
 
 export default function GoogleSignInButton() {
   function getUrl() {
