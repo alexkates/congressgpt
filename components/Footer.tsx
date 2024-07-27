@@ -34,7 +34,7 @@ function Footer() {
         ))}
         .
       </span>
-      <span className="text-center">
+      <span className="text-center tracking-tight">
         Built by&nbsp;
         <Link
           href="https://twitter.com/thealexkates"
@@ -44,7 +44,7 @@ function Footer() {
         >
           Alex Kates
         </Link>
-        . The source code is available on&nbsp;
+        . Source code is available on&nbsp;
         <Link
           href="https://github.com/alexkates/congressgpt"
           target="_blank"

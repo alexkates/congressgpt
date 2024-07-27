@@ -10,9 +10,13 @@ export default function Page() {
         <div className="flex flex-col items-center space-y-8 text-center">
           <div className="space-y-4">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-              <span>Really</span> understand U.S.
+              <span>Finally</span> understand what
               <br />
-              Congressional legislation
+              Congress is{" "}
+              <span className="italic underline underline-offset-4 text-primary">
+                actually
+              </span>{" "}
+              doing
             </h1>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
               Engage in real-time conversations with actual bills from Congress
