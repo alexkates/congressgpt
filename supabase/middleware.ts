@@ -40,7 +40,7 @@ export async function updateSession(request: NextRequest) {
   const anonPages = ["/auth/callback", "/cron", "/error", "/sign-in", "/"];
   if (!user && !anonPages.includes(request.nextUrl.pathname)) {
     const url = request.nextUrl.clone();
-    url.pathname = "/sign-in";
+    url.pathname = "/";
     return NextResponse.redirect(url);
   }
 
