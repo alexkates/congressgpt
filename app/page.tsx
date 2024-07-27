@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { Gavel } from "lucide-react";
+import GoogleSignInButton from "@/components/GoogleSignInButton";
 
 export default function Page() {
   return (
@@ -24,12 +25,7 @@ export default function Page() {
             </p>
           </div>
           <div>
-            <Button size={"lg"} asChild>
-              <Link href="/chat" className="flex items-center">
-                Get Started
-                <Gavel className="w-5 h-5 ml-2" />
-              </Link>
-            </Button>
+            <GoogleSignInButton />
           </div>
         </div>
       </section>
