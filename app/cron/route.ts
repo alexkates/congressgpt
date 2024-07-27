@@ -29,10 +29,10 @@ export async function POST(req: NextRequest) {
       // const textIds = ["BILLS-113s1447rs", "BILLS-118hr8446ih"];
       // if (!textIds.includes(item.guid)) continue; // Useful for testing just one item
 
-      if (processedIds.size > 5) {
-        console.log("Processed 5 items, stopping");
-        break;
-      }
+      // if (processedIds.size > 5) {
+      //   console.log("Processed 5 items, stopping");
+      //   break;
+      // }
 
       console.log("Processing", item.guid);
       const alreadyExists = await client
