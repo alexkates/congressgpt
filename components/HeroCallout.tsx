@@ -1,14 +1,11 @@
 import { getBillsCount } from "@/actions/get-bills-count";
 import { Alert, AlertTitle, AlertDescription } from "./ui/alert";
-import { Megaphone } from "lucide-react";
 
 export default async function HeroCallout() {
   const { count } = await getBillsCount();
 
   return (
-    <Alert className="max-w-sm">
-      <Megaphone className="h-4 w-4" />
-
+    <Alert className="text-center">
       <AlertTitle>
         Over {(Math.floor((count ?? 0) / 100) * 100).toLocaleString()} bills available for chat context
       </AlertTitle>

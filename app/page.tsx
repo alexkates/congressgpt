@@ -7,7 +7,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Page() {
   return (
-    <div className="container flex min-h-[100dvh] flex-col">
+    <div className="flex min-h-[100dvh] flex-col px-4">
       <div className="absolute right-2 top-2">
         <ThemeToggle />
       </div>
