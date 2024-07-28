@@ -16,7 +16,7 @@ export function ChatMessage({ message }: Props) {
 
   return (
     <div
-      className={`${alignmentClassName} ${colorClassNames} ${borderRoundedClassNames} relative mb-8 flex max-w-[80%] flex-col gap-4 rounded-xl px-4 py-2`}
+      className={`${alignmentClassName} ${colorClassNames} ${borderRoundedClassNames} relative mb-8 flex max-w-[95%] flex-col gap-4 rounded-xl px-4 py-2 md:max-w-[80%]`}
     >
       <MemoizedReactMarkdown
         className="prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 break-words"

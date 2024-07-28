@@ -18,11 +18,11 @@ type Props = {
 
 const prompts = [
   "Summarize a random bill",
-  "What is the legislative process",
-  "Tell me about an environmental bill",
-  "Who introduced the last bill",
-  "When was your last bill passed",
-  "Quiz me on recent legislation",
+  "When was the last bill",
+  "Explain the bill process",
+  "Tell me about an env bill",
+  "Who wrote the last bill",
+  "Quiz me on recent bills",
 ];
 
 export function ChatWindow({ chatId, initialMessages }: Props) {
@@ -60,12 +60,12 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
   }, [messages]);
 
   return (
-    <div className={"flex min-h-screen flex-col"}>
+    <div className="flex min-h-screen flex-col">
       {messages?.length === 0 ? (
-        <div className="container flex grow flex-col justify-center gap-4">
-          <div className="flex flex-col items-center">
+        <div className="container flex grow flex-col justify-center gap-8">
+          <div className="flex flex-col items-center gap-1">
             <h2 className="text-2xl font-semibold">Welcome to CongressGPT</h2>
-            <p>
+            <p className="md:text-md text-sm tracking-tighter md:tracking-normal">
               Finally understand what Congress is <span className="bold italic">actually</span> doing
             </p>
           </div>
@@ -95,7 +95,7 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
                     });
                   }}
                 >
-                  <Card className="max-w-[200px] cursor-pointer transition-colors duration-200 ease-in-out hover:border-primary">
+                  <Card className="max-w-[300px] cursor-pointer transition-colors duration-200 ease-in-out hover:border-primary">
                     <CardHeader>
                       <CardDescription>{prompt}</CardDescription>
                     </CardHeader>
