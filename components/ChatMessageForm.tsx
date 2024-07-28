@@ -10,11 +10,7 @@ type Props = {
   sendMessage: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-export default function ChatMessageForm({
-  input,
-  handleInputChange,
-  sendMessage,
-}: Props) {
+export default function ChatMessageForm({ input, handleInputChange, sendMessage }: Props) {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
       e.preventDefault();
@@ -28,7 +24,7 @@ export default function ChatMessageForm({
   return (
     <form
       onSubmit={sendMessage}
-      className="overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring w-full"
+      className="w-full overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
     >
       <Label htmlFor="message" className="sr-only">
         Message
@@ -41,10 +37,10 @@ export default function ChatMessageForm({
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />
-      <div className="flex items-center p-3 pt-0 float-right">
-        <Button type="submit" size="sm" className="gap-4">
+      <div className="float-right flex items-center p-3 pt-0">
+        <Button type="submit" size="sm" className="gap-2">
           <span>Send</span>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center">
             <Command className="w-4" />
             <CornerDownLeft className="w-4" />
           </div>

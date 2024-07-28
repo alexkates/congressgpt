@@ -10,28 +10,22 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
+const description =
+  "Finally understand what Congress is actually doing. Chat with real bills from the U.S. House of Representatives and Senate";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <title>CongressGPT</title>
         <link rel="shortcut icon" href="/favicon.svg" />
-        <meta
-          name="description"
-          content="Starter template showing how to use LangChain in Next.js projects. See source code and deploy your own at https://github.com/langchain-ai/langchain-nextjs-template!"
-        />
-        <meta property="og:title" content="LangChain + Next.js Template" />
-        <meta
-          property="og:description"
-          content="Starter template showing how to use LangChain in Next.js projects. See source code and deploy your own at https://github.com/langchain-ai/langchain-nextjs-template!"
-        />
+        <meta name="description" content={description} />
+        <meta property="og:title" content="CongressGPT" />
+        <meta property="og:description" content={description} />
         <meta property="og:image" content="/images/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="LangChain + Next.js Template" />
-        <meta
-          name="twitter:description"
-          content="Starter template showing how to use LangChain in Next.js projects. See source code and deploy your own at https://github.com/langchain-ai/langchain-nextjs-template!"
-        />
+        <meta name="twitter:title" content="CongressGPT" />
+        <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content="/images/og-image.png" />
       </head>
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
