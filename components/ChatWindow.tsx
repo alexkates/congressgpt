@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import { ChatMessage } from "@/components/ChatMessage";
 import ChatMessageForm from "./ChatMessageForm";
@@ -16,8 +16,6 @@ type Props = {
   initialMessages?: any[];
 };
 
-type SourcesByMessageIndex = Record<string, any>;
-
 const prompts = [
   "Summarize a random bill",
   "What is the legislative process",
@@ -28,18 +26,6 @@ const prompts = [
 ];
 
 export function ChatWindow({ chatId, initialMessages }: Props) {
-  const [sourcesForMessages, setSourcesForMessages] = useState<SourcesByMessageIndex>(() => {
-    const initialSources: SourcesByMessageIndex = {};
-
-    initialMessages?.forEach((message, i) => {
-      if (message.sources) {
-        initialSources[i] = message.sources;
-      }
-    });
-
-    return initialSources;
-  });
-
   const router = useRouter();
   const pathname = usePathname();
 
@@ -55,31 +41,14 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
     initialMessages,
     streamMode: "text",
     async onFinish(message) {
-      console.log("form onFinish: Source for message", sourcesForMessages);
       if (!chatId) {
         const chat = await createChat(message.content);
         chatId = chat.id;
       }
 
-      const sources = sourcesForMessages[messages?.length - 1];
-
-      await createChatMessage({ chatId, sources, message });
+      await createChatMessage({ chatId, message });
 
       if (pathname !== `/chat/${chatId}`) router.push(`/chat/${chatId}`);
-    },
-    onResponse(response) {
-      const sourcesHeader = response.headers.get("x-sources");
-      const sources = sourcesHeader ? JSON.parse(Buffer.from(sourcesHeader, "base64").toString("utf8")) : [];
-      const messageIndexHeader = response.headers.get("x-message-index");
-
-      console.log(`From onResponse: Sources for message ${messageIndexHeader}`, sources);
-
-      if (sources.length && messageIndexHeader !== null) {
-        setSourcesForMessages({
-          ...sourcesForMessages,
-          [messageIndexHeader]: sources,
-        });
-      }
     },
   });
 
@@ -139,7 +108,7 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
       ) : (
         <div className="flex h-40 grow flex-col gap-4 overflow-y-auto p-4" ref={messagesContainerRef}>
           {messages.map((message, i) => (
-            <ChatMessage key={i} message={message} sources={sourcesForMessages?.[i]} />
+            <ChatMessage key={i} message={message} />
           ))}
         </div>
       )}
