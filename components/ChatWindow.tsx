@@ -55,15 +55,15 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
     initialMessages,
     streamMode: "text",
     async onFinish(message) {
+      console.log("form onFinish: Source for message", sourcesForMessages);
       if (!chatId) {
         const chat = await createChat(message.content);
         chatId = chat.id;
       }
 
-      console.log(`Sources:`, sourcesForMessages);
-      const sources = sourcesForMessages[messages?.length];
+      const sources = sourcesForMessages[messages?.length - 1];
 
-      await createChatMessage(chatId, sources, message);
+      await createChatMessage({ chatId, sources, message });
 
       if (pathname !== `/chat/${chatId}`) router.push(`/chat/${chatId}`);
     },
@@ -71,6 +71,9 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
       const sourcesHeader = response.headers.get("x-sources");
       const sources = sourcesHeader ? JSON.parse(Buffer.from(sourcesHeader, "base64").toString("utf8")) : [];
       const messageIndexHeader = response.headers.get("x-message-index");
+
+      console.log(`From onResponse: Sources for message ${messageIndexHeader}`, sources);
+
       if (sources.length && messageIndexHeader !== null) {
         setSourcesForMessages({
           ...sourcesForMessages,
@@ -108,12 +111,13 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
                       chatId = chat.id;
                     }
 
-                    const sources = sourcesForMessages[messages?.length];
-
-                    await createChatMessage(chatId, sources, {
-                      content: prompt,
-                      role: "user",
-                      id: generateId(),
+                    await createChatMessage({
+                      chatId,
+                      message: {
+                        content: prompt,
+                        role: "user",
+                        id: generateId(),
+                      },
                     });
 
                     await append({
@@ -153,12 +157,13 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
               chatId = chat.id;
             }
 
-            const sources = sourcesForMessages[messages?.length];
-
-            await createChatMessage(chatId, sources, {
-              content: input,
-              role: "user",
-              id: generateId(),
+            await createChatMessage({
+              chatId,
+              message: {
+                content: input,
+                role: "user",
+                id: generateId(),
+              },
             });
 
             handleSubmit(e);
