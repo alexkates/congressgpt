@@ -9,7 +9,7 @@ import * as cheerio from "cheerio";
 import * as entities from "entities";
 import Parser from "rss-parser";
 
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   if (req.headers.get("Authorization") !== `Bearer ${process.env.CRON_SECRET}`)
     return new Response(null, { status: 401 });
 
