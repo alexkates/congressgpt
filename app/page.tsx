@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
 import HeroCopy from "@/components/HeroCopy";
 import HowItWorks from "@/components/HowItWorks";
+import Stats from "@/components/Stats";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Page() {
@@ -15,7 +16,7 @@ export default function Page() {
           <HeroCopy />
           <GoogleSignInButton />
         </div>
-
+        <Stats />
         <HowItWorks />
       </section>
       <Footer />

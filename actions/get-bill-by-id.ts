@@ -1,3 +1,5 @@
+"use server";
+
 import { createClient } from "@/supabase/server";
 
 export async function getBillById(id: string) {
