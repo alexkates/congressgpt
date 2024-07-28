@@ -8,6 +8,7 @@ import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase"
 import * as cheerio from "cheerio";
 import * as entities from "entities";
 import Parser from "rss-parser";
+import { getBillById } from "@/actions/get-bill-by-id";
 
 export async function GET(req: NextRequest) {
   if (req.headers.get("Authorization") !== `Bearer ${process.env.CRON_SECRET}`)
@@ -24,6 +25,7 @@ export async function GET(req: NextRequest) {
 
   for (const item of feed.items) {
     try {
+      // Useful for testing just a few items
       // const textIds = ["BILLS-113s1447rs", "BILLS-118hr8446ih"];
       // if (!textIds.includes(item.guid)) continue; // Useful for testing just one item
 
@@ -32,10 +34,7 @@ export async function GET(req: NextRequest) {
       //   break;
       // }
 
-      const alreadyExists = await client
-        .from("documents")
-        .select("metadata->billId", { head: true, count: "exact" })
-        .eq("metadata->>billId", item.guid);
+      const alreadyExists = await getBillById(item.guid);
 
       if (Boolean(alreadyExists.count)) {
         skippedIds.add(item.guid);
