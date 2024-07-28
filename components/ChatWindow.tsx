@@ -126,12 +126,10 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
           </div>
         </div>
       ) : (
-        <div className="grow overflow-y-auto">
-          <div className="flex flex-col gap-4 p-4">
-            {messages.map((message, i) => (
-              <ChatMessage key={i} message={message} sources={sourcesForMessages?.[i]} />
-            ))}
-          </div>
+        <div className="flex h-40 grow flex-col gap-4 overflow-y-auto p-4">
+          {messages.map((message, i) => (
+            <ChatMessage key={i} message={message} sources={sourcesForMessages?.[i]} />
+          ))}
         </div>
       )}
 
