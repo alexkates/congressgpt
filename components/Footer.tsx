@@ -10,17 +10,12 @@ function Footer() {
   ];
 
   return (
-    <footer className="flex flex-col items-center justify-center text-sm leading-snug text-muted-foreground py-4">
+    <footer className="flex flex-col items-center justify-center py-4 text-center text-xs leading-snug text-muted-foreground">
       <span>
         Powered by&nbsp;
         {links.map((link, index) => (
           <React.Fragment key={link.href}>
-            <Link
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
+            <Link href={link.href} target="_blank" rel="noopener noreferrer" className="underline">
               {link.label}
             </Link>
             {index < links.length - 1 ? (
@@ -34,23 +29,13 @@ function Footer() {
         ))}
         .
       </span>
-      <span className="text-center tracking-tight">
+      <span>
         Built by&nbsp;
-        <Link
-          href="https://twitter.com/thealexkates"
-          target="_blank"
-          rel="noreferrer"
-          className="underline"
-        >
+        <Link href="https://twitter.com/thealexkates" target="_blank" rel="noreferrer" className="underline">
           Alex Kates
         </Link>
         . Source code is available on&nbsp;
-        <Link
-          href="https://github.com/alexkates/congressgpt"
-          target="_blank"
-          rel="noreferrer"
-          className="underline"
-        >
+        <Link href="https://github.com/alexkates/congressgpt" target="_blank" rel="noreferrer" className="underline">
           GitHub
         </Link>
         .
