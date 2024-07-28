@@ -313,6 +313,10 @@ export type Database = {
             }
             Returns: unknown
           }
+      count_distinct_bill_ids: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
       halfvec_avg: {
         Args: {
           "": number[]
