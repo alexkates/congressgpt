@@ -2,13 +2,11 @@ import { getBillsCount } from "@/actions/get-bills-count";
 import { Alert, AlertTitle, AlertDescription } from "./ui/alert";
 
 export default async function HeroCallout() {
-  const { count } = await getBillsCount();
+  const { data, count } = await getBillsCount();
 
   return (
     <Alert className="text-center">
-      <AlertTitle>
-        Over {(Math.floor((count ?? 0) / 100) * 100).toLocaleString()} bills available for chat context
-      </AlertTitle>
+      <AlertTitle>Over {(count ?? data ?? 0).toLocaleString()} bills available for chat context</AlertTitle>
       <AlertDescription>
         New bills are added nightly from&nbsp;
         <a
