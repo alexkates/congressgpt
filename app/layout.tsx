@@ -22,11 +22,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="description" content={description} />
         <meta property="og:title" content="CongressGPT" />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content="/images/og-image.png" />
+        <meta property="og:image" content="/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="CongressGPT" />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="/images/og-image.png" />
+        <meta name="twitter:image" content="/og-image.png" />
       </head>
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
