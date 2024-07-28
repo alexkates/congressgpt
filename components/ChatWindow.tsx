@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { ChatMessage } from "@/components/ChatMessage";
 import ChatMessageForm from "./ChatMessageForm";
@@ -80,6 +80,13 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
     },
   });
 
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (messagesContainerRef.current)
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+  }, [messages]);
+
   return (
     <div className={"flex min-h-screen flex-col"}>
       {messages?.length === 0 ? (
@@ -126,7 +133,7 @@ export function ChatWindow({ chatId, initialMessages }: Props) {
           </div>
         </div>
       ) : (
-        <div className="flex h-40 grow flex-col gap-4 overflow-y-auto p-4">
+        <div className="flex h-40 grow flex-col gap-4 overflow-y-auto p-4" ref={messagesContainerRef}>
           {messages.map((message, i) => (
             <ChatMessage key={i} message={message} sources={sourcesForMessages?.[i]} />
           ))}
