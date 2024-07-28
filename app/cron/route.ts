@@ -37,7 +37,6 @@ export async function GET(req: NextRequest) {
       //   break;
       // }
 
-      console.log("Processing", item.guid);
       const alreadyExists = await client
         .from("documents")
         .select("metadata->billId", { head: true, count: "exact" })
