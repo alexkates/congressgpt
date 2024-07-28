@@ -14,14 +14,9 @@ export async function GET(req: NextRequest) {
     return new Response(null, { status: 401 });
 
   const parser = new Parser();
-  const feed = (await parser.parseURL(
-    "https://www.govinfo.gov/rss/bills.xml",
-  )) as BillsFeed;
+  const feed = (await parser.parseURL("https://www.govinfo.gov/rss/bills.xml")) as BillsFeed;
 
-  const client = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_PRIVATE_KEY!,
-  );
+  const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_PRIVATE_KEY!);
 
   const processedIds = new Set<string>();
   const skippedIds = new Set<string>();
@@ -93,21 +88,11 @@ export async function GET(req: NextRequest) {
     queryName: "match_documents",
   });
 
-  if (processedIds.size > 0)
-    console.log(
-      `Processed the following IDs: ${Array.from(processedIds).join(", ")}`,
-    );
+  if (processedIds.size > 0) console.log(`Processed the following IDs: ${Array.from(processedIds).join(", ")}`);
 
-  if (skippedIds.size > 0)
-    console.log(
-      `Skipped the following IDs: ${Array.from(skippedIds).join(", ")}`,
-    );
+  if (skippedIds.size > 0) console.log(`Skipped the following IDs: ${Array.from(skippedIds).join(", ")}`);
 
-  if (processedIds.size > 0)
-    return NextResponse.json(
-      { ok: true, count: processedIds.size },
-      { status: 200 },
-    );
+  if (processedIds.size > 0) return NextResponse.json({ ok: true, count: processedIds.size }, { status: 200 });
 
   return new Response(null, { status: 204 });
 }

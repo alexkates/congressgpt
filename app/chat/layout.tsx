@@ -30,17 +30,17 @@ async function Layout({ children }: Props) {
   if (chatsError) redirect("/error");
 
   return (
-    <main className="flex flex-col md:flex-row h-screen w-full">
+    <main className="flex h-screen w-full flex-col md:flex-row">
       <aside className="md:hidden">
         <MobileChatList chats={chats} />
       </aside>
-      <aside className="hidden md:flex flex-col p-4">
+      <aside className="hidden flex-col p-4 md:flex">
         <section>
           <Link href="/chat" className="font-bold">
             CongressGPT
           </Link>
         </section>
-        <section className="flex-grow overflow-auto mt-4">
+        <section className="mt-4 flex-grow overflow-auto">
           <ChatList chats={chats} />
         </section>
         <section className="mt-4 flex items-center justify-between">

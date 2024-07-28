@@ -10,11 +10,7 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -38,18 +34,8 @@ export default function RootLayout({
         />
         <meta name="twitter:image" content="/images/og-image.png" />
       </head>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
         <Analytics />

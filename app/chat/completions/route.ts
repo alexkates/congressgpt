@@ -8,10 +8,7 @@ import { PromptTemplate } from "@langchain/core/prompts";
 import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
 import { Document } from "@langchain/core/documents";
 import { RunnableSequence } from "@langchain/core/runnables";
-import {
-  BytesOutputParser,
-  StringOutputParser,
-} from "@langchain/core/output_parsers";
+import { BytesOutputParser, StringOutputParser } from "@langchain/core/output_parsers";
 
 export const runtime = "edge";
 
@@ -41,9 +38,7 @@ const CONDENSE_QUESTION_TEMPLATE = `Given the following conversation and a follo
 
 Follow Up Input: {question}
 Standalone question:`;
-const condenseQuestionPrompt = PromptTemplate.fromTemplate(
-  CONDENSE_QUESTION_TEMPLATE,
-);
+const condenseQuestionPrompt = PromptTemplate.fromTemplate(CONDENSE_QUESTION_TEMPLATE);
 
 const ANSWER_TEMPLATE = `You are an expert in congress. You are asked a question about congressional bills. Be concise and professional in your response.
 
@@ -78,10 +73,7 @@ export async function POST(req: NextRequest) {
       temperature: 0.2,
     });
 
-    const client = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_PRIVATE_KEY!,
-    );
+    const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_PRIVATE_KEY!);
 
     const vectorstore = new SupabaseVectorStore(new OpenAIEmbeddings(), {
       client,
@@ -98,11 +90,7 @@ export async function POST(req: NextRequest) {
      * You can also use the "createRetrievalChain" method with a
      * "historyAwareRetriever" to get something prebaked.
      */
-    const standaloneQuestionChain = RunnableSequence.from([
-      condenseQuestionPrompt,
-      model,
-      new StringOutputParser(),
-    ]);
+    const standaloneQuestionChain = RunnableSequence.from([condenseQuestionPrompt, model, new StringOutputParser()]);
 
     let resolveWithDocuments: (value: Document[]) => void;
     const documentPromise = new Promise<Document[]>((resolve) => {
@@ -123,10 +111,7 @@ export async function POST(req: NextRequest) {
 
     const answerChain = RunnableSequence.from([
       {
-        context: RunnableSequence.from([
-          (input) => input.question,
-          retrievalChain,
-        ]),
+        context: RunnableSequence.from([(input) => input.question, retrievalChain]),
         chat_history: (input) => input.chat_history,
         question: (input) => input.question,
       },
